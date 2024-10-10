@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
 import Image from "next/image"
-import Button from "./Button"
 import IconButton from './IconButton'
 
 export default function ThemeSwitch() {
