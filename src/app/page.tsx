@@ -1,22 +1,13 @@
-import ThemeSwitch from "@/components/ThemeSwitch";
-import IconButton from "@/components/IconButton";
-import SearchBar from "@/components/SearchBar";
+import Header from "@/components/Header";
+import ItemRow from "@/components/ItemRow";
 
 export default function Home() {
   return (
-    <div>
-      <div className="flex flex-row justify-center w-full p-2">
-        <div className="flex flex-row w-1/3">
-          <IconButton icon="menu"/>
-        </div>
-        <div className="flex flex-row w-1/3 justify-center">
-          <SearchBar />
-        </div>
-        <div className="flex flex-row w-1/3 justify-end">
-          <ThemeSwitch />
-        </div>
-      </div>
-
+    <div className="w-screen h-screen flex flex-col font-mono bg-gray-200 dark:bg-gray-800">
+      <Header />
+      <ItemRow />
+      <ItemRow />
+      <ItemRow />
     </div>
   );
 }
