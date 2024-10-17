@@ -1,22 +1,16 @@
-import Item from "./Item";
+import getProducts from "@/services/getProducts";
 
-export default function ItemRow() {
+type Props = {
+  category : string
+}
+
+export default function ItemRow(props: Props) {
+
+  const Items = getProducts(props.category)
+
   return (
-    <div className="w-auto flex flex-row justify-evenly p-2">
-      <ul className="inline-block whitespace-nowrap overflow-auto">
-        <li className="p-2 inline-block whitespace-normal"><Item/></li>
-        <li className="p-2 inline-block whitespace-normal"><Item/></li>
-        <li className="p-2 inline-block whitespace-normal"><Item/></li>
-        <li className="p-2 inline-block whitespace-normal"><Item/></li>
-        <li className="p-2 inline-block whitespace-normal"><Item/></li>
-        <li className="p-2 inline-block whitespace-normal"><Item/></li>
-        <li className="p-2 inline-block whitespace-normal"><Item/></li>
-        <li className="p-2 inline-block whitespace-normal"><Item/></li>
-        <li className="p-2 inline-block whitespace-normal"><Item/></li>
-        <li className="p-2 inline-block whitespace-normal"><Item/></li>
-        <li className="p-2 inline-block whitespace-normal"><Item/></li>
-        <li className="p-2 inline-block whitespace-normal"><Item/></li>
-      </ul>
-    </div>
+    <ul className="flex justify-center p-4 overflow-x-auto">
+      {Items}
+    </ul>
   )
 }

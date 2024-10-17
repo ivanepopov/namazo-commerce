@@ -1,14 +1,26 @@
-import Image from "next/image";
-import ifbitLogo from "@/util/ifbit - transparent.png"
+import Image from "next/image"
+import itemMissing from "@/util/ifbit - transparent.png"
 
-export default function Item() {
+type Props = {
+  product_data : any
+}
+
+export default function Item(props : Props) {
+
+  var url = false
+  try {
+    url = Boolean(new URL(props.product_data.image))
+  } catch (e) {}
+
   return (
-    <div className="flex flex-col w-48 h-64 items-center
+    <div id={props.product_data.id}
+        className="flex flex-col w-48 h-64 items-center justify-evenly
                   bg-blue-100 dark:bg-gray-700
                   border-2 border-blue-900 dark:border-orange-400 rounded-md">
-      <Image width="150" alt="item" src={ifbitLogo} />
-      <span className="line-clamp-2 text-sm pl-1">IFBIT LOGO IFIBT LOGO IFFBIT LOGOIFFBIT LOGOIFFBIT LOGO</span>
-      <span className="line-clamp-2 text-xs p-1">⭐⭐⭐⭐⭐ 9,508</span>
-      <span className="line-clamp-2 text-m p-2  ">$32.99</span>
-    </div>  )
+      <Image className="w-24 h-24 object-contain" width={96} height={96} alt="item" src={ url ? props.product_data.image : itemMissing } />
+      <span className="line-clamp-2 text-sm pl-1">{ props.product_data.title }</span>
+      <span className="line-clamp-2 text-xs p-1">⭐ { props.product_data.rating.rate } - { props.product_data.rating.count } reviews</span>
+      <span className="line-clamp-2 text-m">${ props.product_data.price }</span>
+    </div>  
+    )
 }
