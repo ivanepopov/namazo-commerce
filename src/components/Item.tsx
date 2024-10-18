@@ -1,8 +1,9 @@
 import Image from "next/image"
+import type { Product } from "@/types/Product"
 import itemMissing from "@/util/ifbit - transparent.png"
 
 type Props = {
-  product_data : any
+  product_data : Product
 }
 
 export default function Item(props : Props) {
