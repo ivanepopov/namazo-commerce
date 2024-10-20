@@ -1,4 +1,3 @@
-import Item from "@/components/Item"
 import { Product } from "@/types/Product"
 
 export default async function getProducts (category: string, url? : string) {
@@ -7,5 +6,5 @@ export default async function getProducts (category: string, url? : string) {
     const products: Product[] = await res.json()
 
     if (!res.ok) return []
-    return products.map((product: Product) => <li key={product.id} className="p-2"><Item product_data={product} /></li>)
+    return products
 }

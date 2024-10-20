@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Product } from "@/types/Product";
-import Item from "@/components/Item";
+import ProductItem from "@/components/ProductItem";
 
 const product_data: Product = {
     id: "1",
@@ -14,7 +14,7 @@ const product_data: Product = {
 
 describe("Test Item Component", () => {
   it('renders correctly with product data', () => {
-    render(<Item product_data={product_data} />)
+    render(<ProductItem product_data={product_data} />)
     
     const imageElementSrc = screen.getByAltText("item").getAttribute("src")
     
@@ -28,7 +28,7 @@ describe("Test Item Component", () => {
 
   it('renders fallback image if product data does not include an image', () => {
     const noImageData = { ...product_data, image: "" }
-    render(<Item product_data={noImageData} />)
+    render(<ProductItem product_data={noImageData} />)
     
     const imageElementSrc = screen.getByAltText("item").getAttribute("src")
     

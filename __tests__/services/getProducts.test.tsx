@@ -1,14 +1,15 @@
 import getProducts from "@/services/getProducts";
+import { Product } from "@/types/Product";
 
 describe('getProducts', () => {
     it('should return the correct products', async () => {
-        const productList = await getProducts('test', '/products')
+        const productList: Product[] = await getProducts('test', '/products')
         
         // Length and item check
         expect(productList.length).toBe(3)
-        expect(productList[0].key).toBe("0")
-        expect(productList[1].key).toBe("1")
-        expect(productList[2].key).toBe("2")
+        expect(productList[0].id).toBe("0")
+        expect(productList[1].id).toBe("1")
+        expect(productList[2].id).toBe("2")
     })
 
     it('should return a fail message with an error', async () => {

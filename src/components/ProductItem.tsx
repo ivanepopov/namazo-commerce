@@ -6,7 +6,7 @@ type Props = {
   product_data : Product
 }
 
-export default function Item(props : Props) {
+export default function Item(props: Props) {
 
   var url = false
   try {
@@ -14,11 +14,11 @@ export default function Item(props : Props) {
   } catch (e) {}
 
   return (
-    <div id={props.product_data.id}
+    <div
         className="flex flex-col w-48 h-64 items-center justify-evenly
                   bg-blue-100 dark:bg-gray-700
                   border-2 border-blue-900 dark:border-orange-400 rounded-md">
-      <Image className="w-24 h-24 object-contain" width={96} height={96} alt="item" src={ url ? props.product_data.image : itemMissing } />
+      <Image className="w-24 h-24 object-contain" priority width={96} height={96} alt="item" src={ url ? props.product_data.image : itemMissing } />
       <span className="line-clamp-2 text-sm pl-1">{ props.product_data.title }</span>
       <span className="line-clamp-2 text-xs p-1">⭐ { props.product_data.rating.rate } - { props.product_data.rating.count } reviews</span>
       <span className="line-clamp-2 text-m">${ props.product_data.price }</span>

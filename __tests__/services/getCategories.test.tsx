@@ -2,12 +2,12 @@ import getCategories from "@/services/getCategories";
 
 describe('getCategories', () => {
     it('should return the correct categories', async () => {
-        const categoryList = await getCategories('/categories')
+        const categoryList: string[] = await getCategories('/categories')
         
         // Length and item check
         expect(categoryList.length).toBe(5)
-        expect(categoryList[0].props.category).toBe("electronics")
-        expect(categoryList[1].props.category).toBe("jewelery")
+        expect(categoryList[0]).toBe("electronics")
+        expect(categoryList[1]).toBe("jewelery")
     })
     
     it('should return an empty array with an error', async () => {
