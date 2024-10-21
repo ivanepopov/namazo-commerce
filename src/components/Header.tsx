@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <div className="flex flex-row justify-center w-full p-2">
       <div className="flex flex-row w-1/3">
-        <IconButton icon="menu"/>
+        <IconButton icon="menu" hover={true}/>
         <Image height="24" width="48" alt="logo" src={ifbitLogo} />
       </div>
       <div className="flex flex-row w-1/3 justify-center">

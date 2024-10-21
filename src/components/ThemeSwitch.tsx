@@ -27,13 +27,15 @@ export default function ThemeSwitch() {
     return <IconButton
             icon="moon"
             onClick={() => { setTheme('light'); }}
+            hover={true}
            />
   }
 
   if (resolvedTheme === 'light') {
     return <IconButton
             icon="sun"
-            onClick={() => { setTheme('dark'); }}
-          /> 
+            onClick={() => { setTheme('dark') } }
+            hover={true}
+            /> 
     }
 }
