@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
-import Image from "next/image"
-import IconButton from './IconButton'
+import { TiWeatherNight, TiWeatherSunny } from "react-icons/ti";
+import { GoQuestion } from "react-icons/go";
 
 export default function ThemeSwitch() {
   const [mounted, setMounted] = useState(false)
@@ -11,31 +11,19 @@ export default function ThemeSwitch() {
 
   useEffect(() =>  setMounted(true), [])
 
-  if (!mounted) return (
-    <Image
-      src="data:image/svg+xml;base64,PHN2ZyBzdHJva2U9IiNGRkZGRkYiIGZpbGw9IiNGRkZGRkYiIHN0cm9rZS13aWR0aD0iMCIgdmlld0JveD0iMCAwIDI0IDI0IiBoZWlnaHQ9IjIwMHB4IiB3aWR0aD0iMjAwcHgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiB4PSIyIiB5PSIyIiBmaWxsPSJub25lIiBzdHJva2Utd2lkdGg9IjIiIHJ4PSIyIj48L3JlY3Q+PC9zdmc+Cg=="
-      width={36}
-      height={36}
-      sizes="36x36"
-      alt="Loading Light/Dark Toggle"
-      priority={false}
-      title="Loading Light/Dark Toggle"
-    />
-  )
+  if (!mounted) return <GoQuestion size={32} />
 
   if (resolvedTheme === 'dark') {
-    return <IconButton
-            icon="moon"
-            onClick={() => { setTheme('light'); }}
-            hover={true}
-           />
+    return <TiWeatherNight 
+            size={32}
+            color="orange"
+            onClick={() => setTheme('light')}/>
   }
 
   if (resolvedTheme === 'light') {
-    return <IconButton
-            icon="sun"
-            onClick={() => { setTheme('dark') } }
-            hover={true}
-            /> 
+    return <TiWeatherSunny 
+            size={32}
+            color="blue"
+            onClick={() => setTheme('dark')}/>
     }
 }
