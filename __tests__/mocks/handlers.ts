@@ -9,6 +9,11 @@ const allProducts: Product[] = [
     { id: "2", title: "Alien", price: 15, description: "Purple", category: "vehicles", image: "https://fastly.picsum.photos/id/416/200/200.jpg?hmac=QgMiXqHqKofoCv4h8lkrwRSOkn5Twkh15Dfl9Efvtwo", rating: { rate: 3.3, count: 203 } },
 ]
 
+const failProduct : Product = {
+    id: "FAIL", price: -1, title: "FAIL", description: "FAIL", category: "FAIL", image: "FAIL",
+    rating: { rate: -1, count: -1 }
+}
+
 export const handlers = [
     http.get('/categories', () => { 
         return HttpResponse.json(Array.from(allCategories), { status: 200 })
@@ -17,8 +22,17 @@ export const handlers = [
     http.get('/products', () => { 
         return HttpResponse.json(Array.from(allProducts), { status: 200 })
     }),
-
+    
     http.get('/error', () => {
         return HttpResponse.json({}, { status: 500 })
-    })
+    }),
+
+    http.get('/id', () => { 
+        return HttpResponse.json(allProducts[0], { status: 200 })
+    }),
+
+    http.get('/id/error', () => { 
+        return HttpResponse.json(failProduct, { status: 200 })
+    }),
+
 ]
