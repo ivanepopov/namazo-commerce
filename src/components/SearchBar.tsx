@@ -1,5 +1,4 @@
 'use client'
-import IconButton from './IconButton'
 import { useSearchBar } from '@/hooks/useSearchBar';
 import { FaSearch } from "react-icons/fa";
 
