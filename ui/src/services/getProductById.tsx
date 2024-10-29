@@ -8,9 +8,8 @@ const failProduct : Product = {
 export default async function getProductById (id: string, url? : string) {
   
     const res = await fetch(url ? url : `https://fakestoreapi.com/products/${id}`)    
-    const product : Product = await res.json()
+        .then(res => res.json())
+        .catch(error => { return failProduct })
 
-    if (!res.ok) return failProduct
-    
-    return product
+    return res 
 }

@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import { Product } from "@/types/Product";
-import ProductItem from "@/components/ProductItem";
+import ProductItem from "@/components/product/ProductItem";
 
 const product_data: Product = {
     id: "1",

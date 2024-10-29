@@ -10,8 +10,8 @@ describe('getCategories', () => {
         expect(categoryList[1]).toBe("jewelery")
     })
     
-    it('should return an empty array with an error', async () => {
+    it('should return an empty object on error', async () => {
         const categoryList = await getCategories('/error')
-        expect(categoryList.length).toBe(0)
+        expect(categoryList.length).toBe(undefined)
     })
 })

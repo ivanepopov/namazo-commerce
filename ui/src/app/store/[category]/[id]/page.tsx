@@ -8,10 +8,10 @@ export default async function id({ params }: {
     id: string
   }}) {
 
-  const { id } = params
+  const { id } = await params
 
   const product: Product = await getProductById(id)
-  
+    
   return (
     <div>
       <Header />

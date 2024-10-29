@@ -3,12 +3,12 @@ import ProductItemList from "@/components/product/ProductItemList"
 import Ribbon from "@/components/ribbon/Ribbon"
 import Sidebar from "@/components/sidebar/Sidebar"
 
-export default function Category({ params }: {
+export default async function Category({ params }: {
   params: {
     category: string
   }}) {
 
-  const { category } = params
+  const { category } = await params
   return (
     <div>
       <Header />
