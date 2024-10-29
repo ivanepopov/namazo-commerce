@@ -1,7 +1,7 @@
 'use client'
-import { TiWeatherNight, TiWeatherSunny } from "react-icons/ti";
-import { GoQuestion } from "react-icons/go";
-import { useThemeSwitcher } from "@/hooks/useThemeSwitcher";
+import { TiWeatherNight, TiWeatherSunny } from "react-icons/ti"
+import { GoQuestion } from "react-icons/go"
+import { useThemeSwitcher } from "./hooks/useThemeSwitcher"
 
 export default function ThemeSwitch() {
   const { mounted, resolvedTheme, setTheme } = useThemeSwitcher()

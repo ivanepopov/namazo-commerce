@@ -1,6 +1,6 @@
-import getProductsByCategory from "@/services/getProductsByCategory";
-import ProductItem from "@/components/ProductItem"
-import { Product } from "@/types/Product";
+import getProductsByCategory from "@/services/getProductsByCategory"
+import ProductItem from "@/features/product/ProductItem"
+import { Product } from "@/types/Product"
 
 type Props = {
   category : string

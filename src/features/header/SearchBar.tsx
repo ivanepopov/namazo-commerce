@@ -1,6 +1,6 @@
 'use client'
-import { useSearchBar } from '@/hooks/useSearchBar';
-import { FaSearch } from "react-icons/fa";
+import { useSearchBar } from '@/features/header/hooks/useSearchBar'
+import { FaSearch } from "react-icons/fa"
 
 type Props = {}
 

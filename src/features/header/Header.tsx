@@ -1,8 +1,8 @@
 import Image from "next/image";
-import SearchBar from "./SearchBar";
-import ThemeSwitch from "./ThemeSwitch";
 import ifbitLogo from "@/util/ifbit - transparent.png"
-import { RxHamburgerMenu } from "react-icons/rx";
+import { RxHamburgerMenu } from "react-icons/rx"
+import SearchBar from "./SearchBar"
+import ThemeSwitch from "./ThemeSwitch"
 
 export default function Header() {
   return (

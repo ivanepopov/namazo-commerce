@@ -1,6 +1,5 @@
-import Header from "@/components/Header"
-import Ribbon from "@/components/Ribbon"
-import Sidebar from "@/components/Sidebar"
+import Header from "@/features/header/Header"
+import Ribbon from "@/features/ribbon/Ribbon"
 import getProductById from "@/services/getProductById"
 import { Product } from "@/types/Product"
 
@@ -17,10 +16,7 @@ export default async function id({ params }: {
     <div>
       <Header />
       <Ribbon />
-      <div className="flex flex-row">
-        <Sidebar />
-        {product.id !== "FAIL" ? <span>Yay</span> : <span>Nay</span>}
-      </div>
+      {product.id !== "FAIL" ? <span>Yay</span> : <span>Nay</span>}
     </div>
   )
 }
