@@ -1,5 +1,5 @@
-import Header from "@/features/header/Header";
-import Ribbon from "@/features/ribbon/Ribbon";
+import Header from "@/components/header/Header";
+import Ribbon from "@/components/ribbon/Ribbon";
 
 export default function Home() {
   return (

@@ -1,7 +1,7 @@
-import Header from "@/features/header/Header"
-import ProductItemList from "@/features/product/ProductItemList"
-import Ribbon from "@/features/ribbon/Ribbon"
-import Sidebar from "@/features/sidebar/Sidebar"
+import Header from "@/components/header/Header"
+import ProductItemList from "@/components/product/ProductItemList"
+import Ribbon from "@/components/ribbon/Ribbon"
+import Sidebar from "@/components/sidebar/Sidebar"
 
 export default function Category({ params }: {
   params: {

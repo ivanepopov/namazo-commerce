@@ -1,5 +1,5 @@
 import getProductsByCategory from "@/services/getProductsByCategory"
-import ProductItem from "@/features/product/ProductItem"
+import ProductItem from "@/components/product/ProductItem"
 import { Product } from "@/types/Product"
 
 type Props = {
