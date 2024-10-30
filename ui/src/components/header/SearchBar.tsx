@@ -18,7 +18,7 @@ export default function SearchBar({}: Props) {
       ring-1 ring-inset ring-gray-300 placeholder:text-gray-400
       focus:ring-1 focus:ring-inset focus:outline-none
       focus:ring-indigo-600 dark:focus:ring-orange-400
-      sm:text-sm sm:leading-6"
+      sm:text-sm sm:leading-6 font-excalifont"
       placeholder="Search" />
 
       <div className="absolute inset-y-0 right-0 flex items-center">
@@ -28,9 +28,9 @@ export default function SearchBar({}: Props) {
     </div>
     {searchTerm && (
     <div id="dropdown" className="absolute flex flex-col w-1/3 top-[52px] ">
-        <ul className="w-[90%] ml-[5%] max-h-96 overflow-y-auto border-[1px] border-t-0 border-b-0 ring-1 ring-inset ring-gray-300">
+        <ul className="w-[90%] ml-[5%] max-h-96 bg-white dark:bg-[#2B2A33] overflow-y-auto border-[1px] border-t-0">
           {searchResults.map((result) => (
-            <li className="p-2 flex flex-row bg-white/95 hover:bg-indigo-400/95 dark:bg-gray-800/95 dark:hover:bg-orange-400/95" key={result}>
+            <li className="p-2 flex flex-row hover:text-indigo-400 dark:hover:text-orange-400" key={result}>
               <span className="line-clamp-1 flex-nowrap">🔎 {result}</span>
             </li>
           ))}

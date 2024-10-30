@@ -1,5 +1,6 @@
-import Image from "next/image";
-import ifbitLogo from "@/util/ifbit - transparent.png"
+import Image from "next/image"
+import namazo from "@/util/namazo.png"
+import namazo_dark from "@/util/namazo_dark.png"
 import { RxHamburgerMenu } from "react-icons/rx"
 import SearchBar from "./SearchBar"
 import ThemeSwitch from "./ThemeSwitch"
@@ -9,7 +10,10 @@ export default function Header() {
     <div className="flex flex-row justify-center items-center w-full">
       <div className="ml-4 flex flex-row w-1/3">
         <RxHamburgerMenu className="self-center text-indigo-600 dark:text-orange-400" size={30}/>
-        <a href='/'><Image priority className="pl-2" height="48" width="64" alt="logo" src={ifbitLogo} /></a>
+        <div>
+          <a href='/'><Image priority className="block dark:hidden pl-2" height="128" width="128" alt="logo" src={namazo} /></a>
+          <a href='/'><Image priority className="hidden dark:block pl-2" height="128" width="128" alt="logo" src={namazo_dark} /></a>
+        </div>
       </div>
       <div className="flex flex-row w-1/3 justify-center">
         <SearchBar />

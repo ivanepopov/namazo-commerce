@@ -13,9 +13,10 @@ export default async function Category({ params }: {
     <div>
       <Header />
       <Ribbon />
-      <div className="flex flex-row">
+      <div className="flex flex-row align-top justify-evenly">
         <Sidebar />
         <ProductItemList category={category} />
+        <Sidebar />
       </div>
     </div>
   )

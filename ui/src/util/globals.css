@@ -13,3 +13,13 @@
       --foreground: #a6a0fc;
   } 
 }
+
+@font-face {
+  font-family: "Excalifont";
+  src: url("fonts/Excalifont-Regular.woff2");
+}
+
+@font-face {
+  font-family: "Comfortaa";
+  src: url("fonts/Comfortaa-Regular.ttf");
+}

@@ -14,8 +14,7 @@ export default async function ProductItemList(props: Props) {
 
   return (
     <div className="max-w-[1280px]">
-      <ul className="flex flex-wrap p-4">
-        {productItemList}
+      <ul className="flex flex-wrap p-4 font-comfortaa font-thin text-center">
         {productItemList}
       </ul>
     </div>

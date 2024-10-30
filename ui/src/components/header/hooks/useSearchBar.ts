@@ -4,7 +4,7 @@ export const useSearchBar = () => {
 
     const [searchTerm, setSearchTerm] = useState('')
     const [searchResults, setSearchResults] = useState<string[]>([])
-    const [data, setData] = useState<string[]>(["apple", "PLE 2TB Elements Portable External Hard Drive - USB 3.0"])
+    const [data, setData] = useState<string[]>([])
   
     useEffect(() => {
       const filteredResults = data.filter((item) =>
