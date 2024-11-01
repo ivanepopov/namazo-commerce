@@ -10,7 +10,7 @@ type Props = {
 export default async function ProductItemList(props: Props) {
 
   const products: Product[] = await getProductsByCategory(props.category, props.url)
-  const productItemList = products.map((product: Product) => <li key={product.id} id={product.title} className="p-2"><ProductItem product_data={product} /></li>)
+  const productItemList = products.map((product: Product) => <li key={product.id} title={product.title} id={product.id} className="p-2"><ProductItem product_data={product} /></li>)
 
   return (
     <div className="max-w-[1280px]">
