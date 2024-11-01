@@ -13,19 +13,18 @@ export default function SearchBar() {
   const redirectUserBySearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const searchArray = Array.from(searchResults.entries())
-
     if (searchArray.length < 1) return
 
-    if (pathname === '/') router.push(`/store/${encodeURIComponent(searchArray[0][0])}`)
-    else router.push(`${pathname}/${searchArray[0][1]}`)
+    if (searchArray[0][1] !== "null") router.push(`${pathname}/${searchArray[0][1]}`)
+    else router.push(`/store/${searchArray[0][0]}`)
   }
 
   return (
     <>
-    <div className="h-12 w-full relative rounded-md">
+    <div className="h-12 w-full relative">
 
     <form className="h-full" autoComplete="off" onSubmit={redirectUserBySearch}>
-      <div className="h-full w-full relative rounded-md">
+      <div className="h-full w-full relative">
         <input
           id="search"
           type="text"
@@ -43,7 +42,7 @@ export default function SearchBar() {
 
     </div>
     {searchTerm && (
-    <div id="dropdown" className="absolute flex flex-col w-1/3 top-[52px] ">
+    <div id="dropdown" className="absolute flex flex-col w-1/3 top-[3rem] ">
         <ul className="w-[90%] ml-[5%] max-h-96 bg-white dark:bg-[#2B2A33] overflow-y-auto border-[1px] border-t-0">
           {Array.from(searchResults.entries()).map(([title, id]) => (
             <li key={title} title={`namazo_dd_${title}`} className="p-2 flex flex-row hover:text-indigo-400 dark:hover:text-orange-400">
