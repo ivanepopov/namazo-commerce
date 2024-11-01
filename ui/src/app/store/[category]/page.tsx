@@ -9,10 +9,8 @@ export default async function Category({ params }: {
   const { category } = await params
   return (
     <div>
-      <div className="flex flex-row align-top justify-evenly">
-        <Sidebar />
+      <div className="flex flex-row h-screen align-top justify-evenly">
         <ProductItemList category={category} />
-        <Sidebar />
       </div>
     </div>
   )

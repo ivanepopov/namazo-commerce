@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "@/util/globals.css";
 import { Providers } from "./providers";
+import { NextUIProvider } from "@nextui-org/react";
 import Header from "@/components/header/Header";
 import Ribbon from "@/components/ribbon/Ribbon";
 
@@ -18,11 +19,13 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body>
         <Providers>
-          <div className="font-comfortaa">
-            <Header />
-            <Ribbon />
-            {children}
-          </div>
+          <NextUIProvider>
+            <div className="font-comfortaa bg-slate-200 dark:bg-zinc-800">
+              <Header />
+              <Ribbon />
+              {children}
+            </div>  
+          </NextUIProvider>
         </Providers>
       </body>
     </html>
