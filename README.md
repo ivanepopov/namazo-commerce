@@ -1,7 +1,7 @@
 # namazo-commerce
 
 <p align="center">
-  <img src="./ui/src/util/namazo_dark.png" width="350" alt="namazo logo">
+  <img src="./ui/src/util/namazo_light.png" width="350" alt="namazo logo">
 </p>
 
 Namazo is an ecommerce website built using Next.js, designed to be similar to Amazon. It allows users to search
