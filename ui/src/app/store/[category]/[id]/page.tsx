@@ -2,13 +2,14 @@
 import getProductById from "@/services/getProductById"
 import { Product } from "@/types/Product"
 import Image from "next/image"
-import namazo from "@/util/namazo.png"
+import namazo from "@/util/namazo_light.png"
 import namazo_dark from "@/util/namazo_dark.png"
-import StarRating from "@/components/StarRating"
+import StarRating from "@/components/product/ProductStarRating"
 import { Button, Code, Progress } from "@nextui-org/react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { useSearchContext } from "@/app/providers/SearchProvider"
+import ProductPrice from "@/components/product/ProductPrice"
 
 export default function Page({ params }: {
   params: {
@@ -47,7 +48,7 @@ export default function Page({ params }: {
   return (
     <>
       {product.id !== "FAIL" ?
-      <div className="flex flex-row w-screen h-[calc(100vh-100px)] justify-center self-start p-8 items-start">
+      <div className="flex flex-row w-screen h-[calc(100vh-100px)] justify-center self-start p-8 items-start text-black dark:text-white">
         <div className="w-1/6 p-2">
         {
           url ? 
@@ -63,7 +64,7 @@ export default function Page({ params }: {
           <p className="font-bold text-2xl">{product.title}</p>
           <StarRating rating={product.rating}/>
           <hr className="solid"/>
-          <p className="text-3xl p-2"><span className="text-sm align-top">$</span>{product.price}<span className="text-sm align-top">00</span></p>
+          <ProductPrice price={product.price}/>
         </div>
         <div className="w-1/6 p-2">
         </div>

@@ -19,6 +19,9 @@ const config: Config = {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      boxShadow: {
+        '3xl': '0px 5px 5px 2px rgba(0, 0, 0, 0.6)',
+      },
     },
   },
   plugins: [nextui()],
