@@ -1,16 +1,17 @@
 import { Button, Card, CardBody, CardFooter, Divider } from "@nextui-org/react"
 import Image from "next/image"
 import type { Product } from "@/types/Product"
-import namazo from "@/util/namazo.png"
+import namazo_light from "@/util/namazo_light.png"
 import namazo_dark from "@/util/namazo_dark.png"
-import StarRating from "@/components/StarRating"
+import ProductStarRating from "@/components/product/ProductStarRating"
 import { FaHeart } from "react-icons/fa"
+import ProductPrice from "./ProductPrice"
 
 type Props = {
   product_data : Product
 }
 
-export default function Item(props: Props) {
+export default function ProductCard(props: Props) {
 
   const { ...product } = props.product_data 
 
@@ -31,17 +32,17 @@ export default function Item(props: Props) {
                 src={product.image}
               /> :
                 <div>
-                 <Image className="block dark:hidden w-24 h-24 object-contain" priority width={96} height={96} alt="item missing" src={ namazo } />
-                 <Image className="hidden dark:block w-24 h-24 object-contain" priority width={96} height={96} alt="item missing" src={ namazo_dark } />
+                 <Image className="block dark:hidden w-24 h-24 object-contain" priority width={96} height={96} alt="item missing l" src={ namazo_light } />
+                 <Image className="hidden dark:block w-24 h-24 object-contain" priority width={96} height={96} alt="item missing d" src={ namazo_dark } />
                 </div>
             }
             <p className="line-clamp-2 text-sm pl-1 pr-1 min-h-[2.5rem]">{product.title}</p>
-            <p className="line-clamp-2 text-xs pl-1 pr-1"><StarRating rating={product.rating}/></p>
+            <p className="line-clamp-2 text-xs pl-1 pr-1"><ProductStarRating rating={product.rating}/></p>
             <Divider orientation="horizontal"/>
           </CardBody>
         </a>
         <CardFooter className="text-small justify-between">
-          <p className="text-default-500">${product.price}</p>
+          <ProductPrice price={product.price} type="card"/>
           <Button className="h-8 hover:text-[#F54180]" isIconOnly color="default" variant="flat" aria-label="Like">
             <FaHeart size={16}/>
           </Button>    
