@@ -27,7 +27,6 @@ export const SearchProvider = ({ children } : { children: ReactNode}) => {
     if (typeof document !== 'undefined') {
       const items: Map<string, string> = new Map()
       const liElements = Array.from(document.getElementsByTagName('li'))
-      console.log(items)
       if (liElements.length === 0) {
         Array.from(document.getElementsByTagName('a')).forEach(e => {
           if (!e.title.startsWith("namazo")) items.set(e.title, "null")
@@ -37,7 +36,6 @@ export const SearchProvider = ({ children } : { children: ReactNode}) => {
           if (!e.title.startsWith("namazo")) items.set(e.title, e.id)
         })
       }
-      console.log(items)
       setData(items)
     }
   }, [refreshData])
