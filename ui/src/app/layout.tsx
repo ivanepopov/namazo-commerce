@@ -20,11 +20,11 @@ export default function RootLayout({
       <body>
         <Providers>
           <NextUIProvider>
+            <Header />
+            <Ribbon />
             <div className="font-comfortaa bg-slate-200 dark:bg-zinc-800">
-              <Header />
-              <Ribbon />
               {children}
-            </div>  
+            </div>
           </NextUIProvider>
         </Providers>
       </body>

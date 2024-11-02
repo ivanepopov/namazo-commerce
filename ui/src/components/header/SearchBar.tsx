@@ -1,12 +1,11 @@
 'use client'
-import { useSearchBar } from '@/components/header/hooks/useSearchBar'
+import { useSearchContext } from '@/app/providers/SearchProvider'
 import { usePathname, useRouter } from 'next/navigation'
 import { FaSearch } from "react-icons/fa"
 
 export default function SearchBar() {
   
-  const { searchResults, searchTerm, setSearchTerm } = useSearchBar()
-
+  const { searchResults, searchTerm, refreshData, setRefreshData, setSearchTerm } = useSearchContext()
   const router = useRouter()
   const pathname = usePathname()
 
@@ -45,7 +44,7 @@ export default function SearchBar() {
     <div id="dropdown" className="absolute flex flex-col w-1/3 top-[3rem] z-10">
         <ul className="w-[90%] ml-[5%] max-h-96 bg-slate-100 dark:bg-zinc-800 overflow-y-auto shadow-2xl">
           {Array.from(searchResults.entries()).map(([title, id]) => (
-            <li key={title} title={`namazo_dd_${title}`} className="p-2 flex flex-row hover:text-indigo-400 dark:hover:text-orange-400">
+            <li key={title} title={`namazo_item_${title}`} className="p-2 flex flex-row hover:text-indigo-400 dark:hover:text-orange-400">
               <span className="line-clamp-1 flex-nowrap">🔎 {title}</span>
             </li>
           ))}

@@ -1,18 +1,43 @@
+'use client'
 import getProductById from "@/services/getProductById"
 import { Product } from "@/types/Product"
 import Image from "next/image"
 import namazo from "@/util/namazo.png"
 import namazo_dark from "@/util/namazo_dark.png"
 import StarRating from "@/components/StarRating"
+import { Button, Code, Progress } from "@nextui-org/react"
+import Link from "next/link"
+import { useEffect, useState } from "react"
+import { useSearchContext } from "@/app/providers/SearchProvider"
 
-export default async function Page({ params }: {
+export default function Page({ params }: {
   params: {
     id: string
   }}) {
 
-  const { id } = await params
+  const { refreshData, setRefreshData } = useSearchContext()
+  const [product, setProduct] = useState<Product>()
+  const [loading, setLoading] = useState(true)
 
-  const product: Product = await getProductById(id)
+  useEffect(() => {
+    async function fetchProduct() {
+      const { id } = await params
+      const fetchedProduct: Product = await getProductById(id)
+      setProduct(fetchedProduct)
+      setLoading(false)
+    }
+
+    fetchProduct()
+  }, [])
+
+  useEffect(() => {
+    if (product) {
+      setRefreshData(!refreshData)
+    }
+  }, [product])
+
+  if (loading || product === undefined)
+    return <div className="h-[calc(100vh-100px)] w-screen"><Progress className="w-full" size="md" color="warning" isIndeterminate aria-label="Loading..."/></div>  
 
   var url = false
   try {
@@ -22,8 +47,8 @@ export default async function Page({ params }: {
   return (
     <>
       {product.id !== "FAIL" ?
-      <div className="flex flex-row justify-center self-start p-8 items-start">
-        <div className="w-1/6 p-2 flex items-start">
+      <div className="flex flex-row w-screen h-[calc(100vh-100px)] justify-center self-start p-8 items-start">
+        <div className="w-1/6 p-2">
         {
           url ? 
             <Image className="w-96 h-auto object-contain" priority width={512} height={512} alt="item" src={ product.image } />
@@ -44,7 +69,15 @@ export default async function Page({ params }: {
         </div>
       </div>
       :
-      <p>Nay</p>}
+      <div className="flex flex-col h-[calc(100vh-100px)] w-screen justify-center items-center">
+        <Code color="default" size="lg">404: Product not found</Code>
+        <Link href="/">
+          <Button color="warning" variant="light">
+            Return Home
+          </Button>
+        </Link>
+      </div>
+      }
       </>
   )
 }
