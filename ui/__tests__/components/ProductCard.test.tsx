@@ -23,7 +23,7 @@ describe("Test Item Component", () => {
     // Check if title, rating, and price are displayed correctly
     expect(screen.getByText('Sample Product Title')).toBeInTheDocument()
     expect(screen.getByText('- 9999 reviews')).toBeInTheDocument()
-    //expect(screen.getByText('29')).toBeInTheDocument()
+    expect(screen.getByText('29')).toBeInTheDocument()
   })
 
   it('renders fallback image if product data does not include an image', () => {
