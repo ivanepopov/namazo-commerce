@@ -1,5 +1,5 @@
 'use client'
-import { useSearchContext } from "@/app/providers/SearchProvider"
+import { useSearchContext } from "@/providers/SearchProvider"
 import ProductCard from "@/components/product/ProductCard"
 import getProductsByCategory from "@/services/getProductsByCategory"
 import { Product } from "@/types/Product"

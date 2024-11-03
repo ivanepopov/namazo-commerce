@@ -1,6 +1,6 @@
 'use client'
 import { ThemeProvider } from "next-themes"
-import { SearchProvider } from "./providers/SearchProvider"
+import { SearchProvider } from "@/providers/SearchProvider"
 import { NextUIProvider } from "@nextui-org/react";
 import { ReactNode } from "react";
 

@@ -8,7 +8,7 @@ import StarRating from "@/components/product/ProductStarRating"
 import { Button, Code, Progress } from "@nextui-org/react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
-import { useSearchContext } from "@/app/providers/SearchProvider"
+import { useSearchContext } from "@/providers/SearchProvider"
 import ProductPrice from "@/components/product/ProductPrice"
 
 export default function Page({ params }: {

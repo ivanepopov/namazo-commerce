@@ -1,6 +1,6 @@
 'use client'
 import { useEffect } from "react";
-import { useSearchContext } from "./providers/SearchProvider";
+import { useSearchContext } from "@/providers/SearchProvider";
 
 export default function Home() {
 

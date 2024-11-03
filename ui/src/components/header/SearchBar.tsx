@@ -1,5 +1,5 @@
 'use client'
-import { useSearchContext } from '@/app/providers/SearchProvider'
+import { useSearchContext } from '@/providers/SearchProvider'
 import { usePathname, useRouter } from 'next/navigation'
 import { FaSearch } from "react-icons/fa"
 
