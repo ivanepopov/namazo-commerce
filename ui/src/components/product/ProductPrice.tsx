@@ -1,4 +1,11 @@
-export default function ProductPrice({ price, type } : { price: number, type?: string}) {
+/* * 
+ * Component that nicely displays the price with a smaller text for
+ * coins and the dollar sign
+ *
+ * @prop: price
+ * @prop: type - optional type to change text
+ * *******************************************************************/
+function ProductPrice({ price, type } : { price : number, type? : string}) {
 
   const priceString = price.toString()
   const priceValues = priceString.split(".")
@@ -15,3 +22,5 @@ export default function ProductPrice({ price, type } : { price: number, type?: s
       </p>
   )
 }
+
+export default ProductPrice

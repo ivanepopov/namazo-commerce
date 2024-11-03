@@ -1,7 +1,13 @@
-export default function ProductStarRating({ rating }: { rating: { rate: number, count: number }}) {
+/* * 
+ * Component that nicely displays gold stars and colorless stars based
+ * on rate, along with the number of reviews
+ *
+ * @prop: rate - rating out of 5 stars
+ * @prop: count - total number of reviews
+ * *******************************************************************/
+function ProductStarRating({ rating }: { rating: { rate : number, count : number }}) {
 
   let n = Math.round(rating.rate)
-
   let shinystars = ""
   let sadstars = ""
 
@@ -18,3 +24,5 @@ export default function ProductStarRating({ rating }: { rating: { rate: number, 
     </>
   )
 }
+
+export default ProductStarRating

@@ -3,17 +3,23 @@ import { useSearchContext } from '@/app/providers/SearchProvider'
 import { usePathname, useRouter } from 'next/navigation'
 import { FaSearch } from "react-icons/fa"
 
-export default function SearchBar() {
+/* *
+ * Component that allows the user to search for a product or category
+ * based on the current page. Filters out results based on user input
+ * *******************************************************************/
+function SearchBar() {
   
-  const { searchResults, searchTerm, refreshData, setRefreshData, setSearchTerm } = useSearchContext()
+  const { searchResults, searchTerm, setSearchTerm } = useSearchContext()
   const router = useRouter()
   const pathname = usePathname()
 
+  // Function that redirects user if there is a valid searchResult
   const redirectUserBySearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const searchArray = Array.from(searchResults.entries())
     if (searchArray.length < 1) return
 
+    // Redirect to category if id is null, else redirect to product
     if (searchArray[0][1] !== "null") router.push(`${pathname}/${searchArray[0][1]}`)
     else router.push(`/store/${searchArray[0][0]}`)
   }
@@ -54,3 +60,5 @@ export default function SearchBar() {
     </>
   )
 }
+
+export default SearchBar

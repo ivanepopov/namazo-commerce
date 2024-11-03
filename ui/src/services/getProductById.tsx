@@ -5,7 +5,13 @@ const failProduct : Product = {
     rating: { rate: -1, count: -1 }
 }
 
-export default async function getProductById (id: string, url? : string) {
+/* * 
+ * @param: id  - ID to search product by
+ * @param: url - Optional url used for testing purposes
+ * 
+ * @return: Product
+ * *******************************************************************/
+async function getProductById (id : string, url? : string) {
   
     const res = await fetch(url ? url : `https://fakestoreapi.com/products/${id}`)    
         .then(res => res.json())
@@ -13,3 +19,5 @@ export default async function getProductById (id: string, url? : string) {
 
     return res 
 }
+
+export default getProductById

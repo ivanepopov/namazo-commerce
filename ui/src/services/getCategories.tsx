@@ -1,4 +1,9 @@
-export default async function getCategories (url? : string) {
+/* * 
+ * @param: url - Optional url used for testing purposes
+ * 
+ * @return: string[]
+ * *******************************************************************/
+async function getCategories (url? : string) {
 
     const res = await fetch(url? url : 'https://fakestoreapi.com/products/categories')
         .then(res => res.json())
@@ -6,3 +11,5 @@ export default async function getCategories (url? : string) {
 
     return res 
 }
+
+export default getCategories

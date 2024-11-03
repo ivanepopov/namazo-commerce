@@ -1,4 +1,10 @@
-export default async function getProductsByCategory (category: string, url? : string) {
+/* * 
+ * @param: category - Category to get products from
+ * @param: url - Optional url used for testing purposes
+ * 
+ * @return: Product[]
+ * *******************************************************************/
+async function getProductsByCategory (category : string, url? : string) {
 
     const res = await fetch(url ? url : `https://fakestoreapi.com/products/category/${category}`)
         .then(res => res.json())
@@ -6,3 +12,5 @@ export default async function getProductsByCategory (category: string, url? : st
 
     return res
 }
+
+export default getProductsByCategory

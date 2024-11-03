@@ -5,7 +5,7 @@ import { NextUIProvider } from "@nextui-org/react";
 import { ReactNode } from "react";
 
 export function Providers({ children } : { children : ReactNode}) {
-    return (
+  return (
     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
       <SearchProvider>
         <NextUIProvider>
@@ -13,5 +13,5 @@ export function Providers({ children } : { children : ReactNode}) {
         </NextUIProvider>
       </SearchProvider>
     </ThemeProvider>
-    )
+  )
 }

@@ -1,8 +1,11 @@
-type Props = {}
-
-export default function Sidebar(props: Props) {
+/* * 
+ * Sidebar component that allows user to filter products by size,
+ * price, color, etc.
+ * *******************************************************************/
+function Sidebar() {
   return (
-    <div className="h-screen w-1/6 bg-indigo-200 dark:bg-orange-300/15">
-    </div>
+    <p>TODO</p>
   )
 }
+
+export default Sidebar

@@ -6,7 +6,11 @@ import SearchBar from "./SearchBar"
 import ThemeSwitch from "./ThemeSwitch"
 import Link from "next/link"
 
-export default function Header() {
+/* *
+ * Header that displays Hamburger Menu, Namazo Icon, Searchbar, and
+ * ThemeSwitcher, used in root layout to prevent excess re-rendering
+ * *******************************************************************/
+function Header() {
   return (
     <div className="flex flex-row justify-center items-center w-full bg-gradient-to-r from-orange-700 via-amber-600 to-orange-700">
       <div className="ml-4 flex flex-row w-1/3">
@@ -25,3 +29,5 @@ export default function Header() {
     </div>
     )
 }
+
+export default Header

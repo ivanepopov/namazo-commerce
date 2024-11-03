@@ -1,7 +1,11 @@
 import getCategories from "@/services/getCategories"
 import Link from "next/link"
 
-export default async function Ribbon() {
+/* * 
+ * Ribbon component that displays all categories below the Header,
+ * used in root layout to prevent excess re-rendering
+ * *******************************************************************/
+async function Ribbon() {
   
   const categories: string[] = await getCategories()
 
@@ -13,3 +17,5 @@ export default async function Ribbon() {
     </div>
   )
 }
+
+export default Ribbon
