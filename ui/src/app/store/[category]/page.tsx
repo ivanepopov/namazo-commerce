@@ -6,6 +6,7 @@ import { Product } from "@/types/Product"
 import { Button, Code, Progress } from "@nextui-org/react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import Sidebar from "@/components/sidebar/Sidebar"
 
 export default function Category({ params }: {
   params: {
@@ -34,22 +35,24 @@ export default function Category({ params }: {
   }, [products])
 
   if (loading || products === undefined)
-    return <div className="h-[calc(100vh-100px)] w-screen"><Progress className="w-full" size="md" color="warning" isIndeterminate aria-label="Loading..."/></div>  
+    return <div className="h-page w-screen"><Progress className="w-full" size="md" color="warning" isIndeterminate aria-label="Loading..."/></div>  
 
   const productItemList = products.map((product: Product) => <li key={product.id} title={product.title} id={product.id} className="p-2"><ProductCard product_data={product} /></li>)
   
   return (
     <>
       {productItemList.length !== 0 ?
-      <div className="flex flex-row h-[calc(100vh-100px)] align-top justify-evenly">
-        <div className="max-w-[1280px]">
-          <ul className="flex flex-wrap p-4 font-comfortaa font-thin text-center">
+      <div className="flex justify-center">
+        <div className="flex flex-row w-page h-page">
+          <Sidebar />
+          <ul className="flex flex-wrap w-3/4 p-4 items-start">
+            {productItemList}
             {productItemList}
           </ul>
         </div>
       </div>
       :
-      <div className="flex flex-col h-[calc(100vh-100px)] w-screen justify-center items-center">
+      <div className="flex flex-col h-page w-screen justify-center items-center">
         <Code color="default" size="lg">404: No products found</Code>
         <Link href="/">
           <Button color="warning" variant="light">

@@ -11,7 +11,7 @@ export default function Home() {
   }, [])
 
   return (
-    <div className="w-screen h-[calc(100vh-100px)]">
+    <div className="w-screen h-page">
     </div>
   );
 }

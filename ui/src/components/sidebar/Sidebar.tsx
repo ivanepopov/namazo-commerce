@@ -4,7 +4,7 @@
  * *******************************************************************/
 function Sidebar() {
   return (
-    <p>TODO</p>
+    <div className="w-1/4 border-2 border-black dark:border-white text-black dark:text-white text-center">TODO</div>
   )
 }
 

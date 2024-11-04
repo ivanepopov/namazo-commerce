@@ -38,7 +38,7 @@ export default function Page({ params }: {
   }, [product])
 
   if (loading || product === undefined)
-    return <div className="h-[calc(100vh-100px)] w-screen"><Progress className="w-full" size="md" color="warning" isIndeterminate aria-label="Loading..."/></div>  
+    return <div className="h-page w-screen"><Progress className="w-full" size="md" color="warning" isIndeterminate aria-label="Loading..."/></div>  
 
   var url = false
   try {
@@ -48,29 +48,31 @@ export default function Page({ params }: {
   return (
     <>
       {product.id !== "FAIL" ?
-      <div className="flex flex-row w-screen h-[calc(100vh-100px)] justify-center self-start p-8 items-start text-black dark:text-white">
-        <div className="w-1/6 p-2">
-        {
-          url ? 
-            <Image className="w-96 h-auto object-contain" priority width={512} height={512} alt="item" src={ product.image } />
-            :
-            <div>
-              <Image className="dark:hidden w-24 h-auto object-contain" priority width={96} height={96} alt="item missing" src={ namazo } />
-              <Image className="hidden dark:block w-24 h-auto object-contain" priority width={96} height={96} alt="item missing" src={ namazo_dark } />
-            </div>
-        }
-        </div>
-        <div className="w-1/3 p-2">
-          <p className="font-bold text-2xl">{product.title}</p>
-          <StarRating rating={product.rating}/>
-          <hr className="solid"/>
-          <ProductPrice price={product.price}/>
-        </div>
-        <div className="w-1/6 p-2">
+      <div className="flex justify-center">
+        <div className="flex flex-row w-page h-page justify-center p-8 items-start text-black dark:text-white">
+          <div className="w-1/6 p-2">
+          {
+            url ? 
+              <Image className="w-96 h-auto object-contain" priority width={512} height={512} alt="item" src={ product.image } />
+              :
+              <div>
+                <Image className="dark:hidden w-24 h-auto object-contain" priority width={96} height={96} alt="item missing" src={ namazo } />
+                <Image className="hidden dark:block w-24 h-auto object-contain" priority width={96} height={96} alt="item missing" src={ namazo_dark } />
+              </div>
+          }
+          </div>
+          <div className="w-1/3 p-2">
+            <p className="font-bold text-2xl">{product.title}</p>
+            <StarRating rating={product.rating}/>
+            <hr className="solid"/>
+            <ProductPrice price={product.price}/>
+          </div>
+          <div className="w-1/6 p-2">
+          </div>
         </div>
       </div>
       :
-      <div className="flex flex-col h-[calc(100vh-100px)] w-screen justify-center items-center">
+      <div className="flex flex-col h-page w-screen justify-center items-center">
         <Code color="default" size="lg">404: Product not found</Code>
         <Link href="/">
           <Button color="warning" variant="light">

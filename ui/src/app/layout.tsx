@@ -2,7 +2,6 @@ import "@/util/globals.css";
 import type { Metadata } from "next";
 import { Providers } from "./providers";
 import Header from "@/components/header/Header";
-import Ribbon from "@/components/ribbon/Ribbon";
 
 export const metadata: Metadata = {
   title: "Namazo. Spend more. Frown less.",
@@ -19,7 +18,6 @@ export default function RootLayout({
       <body className="font-comfortaa bg-gradient-to-r bg-white dark:bg-black text-white dark:text-black">
         <Providers>
           <Header />
-          <Ribbon />
           <div>
             {children}
           </div>

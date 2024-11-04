@@ -10,11 +10,13 @@ async function Ribbon() {
   const categories: string[] = await getCategories()
 
   return (
-    <div className="flex flex-row h-12 w-full items-center align-middle justify-evenly font-excalifont bg-gradient-to-r from-orange-700 via-amber-600 to-orange-700">
+    <nav className="flex justify-center h-12 w-screen bg-black text-white">
+      <ul className="flex flex-row h-full w-[1280px] items-center align-middle justify-evenly font-excalifont">
       {
         categories.map(c => <Link key={c} title={c} href={`/store/${c}`}>{c}</Link>)
-      }
-    </div>
+      }  
+      </ul>
+    </nav>
   )
 }
 

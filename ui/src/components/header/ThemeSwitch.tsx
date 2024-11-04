@@ -12,8 +12,8 @@ function ThemeSwitch() {
   if (!mounted) return <GoQuestion size={32} />
 
   return resolvedTheme === 'light' ?
-    <TiWeatherSunny size={32} color="white" onClick={() => setTheme('dark')}/> :
-    <TiWeatherNight size={32} color="black" onClick={() => setTheme('light')}/>
+    <TiWeatherSunny size={32} color="black" onClick={() => setTheme('dark')}/> :
+    <TiWeatherNight size={32} color="white" onClick={() => setTheme('light')}/>
 }
 
 export default ThemeSwitch

@@ -20,8 +20,14 @@ const config: Config = {
         foreground: "var(--foreground)",
       },
       boxShadow: {
-        '3xl': '0px 5px 5px 2px rgba(0, 0, 0, 0.6)',
+        'search': '0px 20px 5px -15px rgba(0, 0, 0, 0.6)',
       },
+      height: {
+        'page' : 'calc(100vh - 148px)'
+      },
+      width: {
+        'page' : '1280px'
+      }
     },
   },
   plugins: [nextui()],
