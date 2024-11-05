@@ -3,10 +3,11 @@ import { useSearchContext } from "@/providers/SearchProvider"
 import ProductCard from "@/components/product/ProductCard"
 import getProductsByCategory from "@/services/getProductsByCategory"
 import { Product } from "@/types/Product"
-import { Button, Code, Progress } from "@nextui-org/react"
+import { Button, Code } from "@nextui-org/react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import Sidebar from "@/components/sidebar/Sidebar"
+import CustomLoading from "@/components/CustomLoading"
 
 export default function Category({ params }: {
   params: {
@@ -35,7 +36,7 @@ export default function Category({ params }: {
   }, [products])
 
   if (loading || products === undefined)
-    return <div className="h-page w-screen"><Progress className="w-full" size="md" color="warning" isIndeterminate aria-label="Loading..."/></div>  
+    return <CustomLoading />  
 
   const productItemList = products.map((product: Product) => <li key={product.id} title={product.title} id={product.id} className="p-2"><ProductCard product_data={product} /></li>)
   

@@ -5,11 +5,12 @@ import Image from "next/image"
 import namazo from "@/util/namazo_light.png"
 import namazo_dark from "@/util/namazo_dark.png"
 import StarRating from "@/components/product/ProductStarRating"
-import { Button, Code, Progress } from "@nextui-org/react"
+import { Button, Code } from "@nextui-org/react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { useSearchContext } from "@/providers/SearchProvider"
 import ProductPrice from "@/components/product/ProductPrice"
+import CustomLoading from "@/components/CustomLoading"
 
 export default function Page({ params }: {
   params: {
@@ -38,7 +39,7 @@ export default function Page({ params }: {
   }, [product])
 
   if (loading || product === undefined)
-    return <div className="h-page w-screen"><Progress className="w-full" size="md" color="warning" isIndeterminate aria-label="Loading..."/></div>  
+    return <CustomLoading />
 
   var url = false
   try {
