@@ -17,7 +17,7 @@ import SaleRibbon from "./SaleRibbon"
 function Header() {
   return (
     <div className="flex flex-col justify-center items-center">
-      <SaleRibbon type="winter" dateEnd="12/31" percentOff={15}/>
+      <SaleRibbon type="Winter" dateEnd="12/31" percentOff={15}/>
       <div className="flex flex-row h-20 w-[1280px] items-center justify-between text-black dark:text-white">
         <RxHamburgerMenu  size={30}/>
         <div>
