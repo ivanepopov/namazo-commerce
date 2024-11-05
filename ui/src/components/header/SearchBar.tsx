@@ -14,14 +14,31 @@ function SearchBar() {
   const pathname = usePathname()
 
   // Function that redirects user if there is a valid searchResult
+  // (when enter is pressed)
   const redirectUserBySearch = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     const searchArray = Array.from(searchResults.entries())
     if (searchArray.length < 1) return
 
     // Redirect to category if id is null, else redirect to product
-    if (searchArray[0][1] !== "null") router.push(`${pathname}/${searchArray[0][1]}`)
-    else router.push(`/store/${searchArray[0][0]}`)
+    if (searchArray[0][1] !== "null")
+      router.push(`${pathname}/${searchArray[0][1]}`)
+    else
+      router.push(`/store/${searchArray[0][0]}`)
+  
+      setSearchTerm("")
+  }
+
+// Function that redirects user if there is a valid searchResult
+// (when item in list is clicked)
+  const redirectUserByID = ( title : string, id : string ) => {
+    console.log(title, id)
+    if (id === "null")
+      router.push(`/store/${title}`)
+    else
+      router.push(`${pathname}/${id}`)
+
+    setSearchTerm("")
   }
 
   return (
@@ -50,7 +67,7 @@ function SearchBar() {
     <div id="dropdown" className="absolute w-1/3 h-96 right-1/3 top-36 rounded-md flex justify-center items-center bg-slate-500/60 z-10 text-gray-900 dark:text-gray-50">
         <ul className="w-4/5 h-max-full h-min-0 bg-slate-400 dark:bg-zinc-800 overflow-y-hidden shadow-2xl">
           {Array.from(searchResults.entries()).map(([title, id]) => (
-            <li key={title} title={`namazo_item_${title}`} className="p-2 hover:text-orange-400">
+            <li key={title} title={`namazo_item_${title}`} className="p-2 hover:text-orange-400" onClick={() => {redirectUserByID(title, id)}}>
               <span className="line-clamp-1 flex-nowrap">{title}</span>
             </li>
           ))}
