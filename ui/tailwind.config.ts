@@ -23,7 +23,7 @@ const config: Config = {
         'search': '0px 20px 5px -15px rgba(0, 0, 0, 0.6)',
       },
       height: {
-        'page' : 'calc(100vh - 148px)'
+        'page' : 'calc(100vh - 130px)'
       },
       width: {
         'page' : '1280px'
