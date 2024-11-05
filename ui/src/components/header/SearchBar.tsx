@@ -47,11 +47,11 @@ function SearchBar() {
 
     </div>
     {searchTerm && (
-    <div id="dropdown" className="absolute flex flex-col w-1/3 top-[4rem] z-10 text-gray-900 dark:text-gray-50">
-        <ul className="w-[90%] ml-[5%] max-h-96 bg-slate-100 dark:bg-zinc-800 overflow-y-auto shadow-2xl">
+    <div id="dropdown" className="absolute w-1/3 h-96 right-1/3 top-36 rounded-md flex justify-center items-center bg-slate-500/60 z-10 text-gray-900 dark:text-gray-50">
+        <ul className="w-4/5 h-max-full h-min-0 bg-slate-400 dark:bg-zinc-800 overflow-y-hidden shadow-2xl">
           {Array.from(searchResults.entries()).map(([title, id]) => (
-            <li key={title} title={`namazo_item_${title}`} className="p-2 flex flex-row hover:text-orange-400">
-              <span className="line-clamp-1 flex-nowrap">🔎 {title}</span>
+            <li key={title} title={`namazo_item_${title}`} className="p-2 hover:text-orange-400">
+              <span className="line-clamp-1 flex-nowrap">{title}</span>
             </li>
           ))}
         </ul>

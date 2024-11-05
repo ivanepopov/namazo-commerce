@@ -11,10 +11,10 @@ function SaleRibbon(props : Props) {
   
   const { type, dateEnd, percentOff } = props
 
-  if (type === "none") return <></>
-  
   let saleRibbonClass = "flex flex-row h-12 w-screen justify-evenly items-center text-white "
   let decoration: JSX.Element = <></>
+  
+  if (type === "none") return <></>
 
   switch (type.toLowerCase()) {
     case "winter":
