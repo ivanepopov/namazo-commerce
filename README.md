@@ -4,11 +4,13 @@
   <img src="./ui/src/util/namazo_dark.png" width="350" alt="namazo logo">
 </p>
 
-Namazo is an ecommerce website built using Next.js, designed to be similar to Amazon. It allows users to search
-for products based on category, and provides a list of categories with their corresponding product listings.
+Namazo is an ecommerce website built using Next.js. Initially designed to be similar to Amazon, but has since taken a different approach for improved clarity and ease of use.
+
+Users may search for products based on category, and are shown a list of categories with their corresponding product listings.
 
 ## Features
 
+* **Sale Ribbon**: Users are shown a ribbon at the top of the page when a sale is active.
 * **Product Search**: Users can search for specific products within a department using the top search bar.
 * **Category Navigation**: A list of categories is provided, allowing users to browse through different sections
 of the website.
@@ -16,8 +18,8 @@ of the website.
 cards. Cards include:
     - Product image
     - Price
-    - Rating
-    - Total reviews
+    - Rating & Total reviews
+    - Heart icon to add to cart (TODO)
 * **Individual Product Pages**: Clicking on a product redirects users to the product's details page, where they
 can view additional information.
 * **Theme Switcher**: A button allows users to switch between light and dark modes.
@@ -39,7 +41,6 @@ Containerized with Docker
 
 ## Todos
 - Add more categories with products
-- Implement a search functionality for the entire site
 - Add user authentication and personalization features
 - Implement a shopping cart feature
 - Integrate FastAPI backend with a MongoDB database to store product data
