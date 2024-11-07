@@ -9,6 +9,7 @@ import ThemeSwitch from "./ThemeSwitch"
 import Ribbon from "./Ribbon"
 import Store from "./Store"
 import SaleRibbon from "./SaleRibbon"
+import Cart from "./Cart"
 
 /* *
  * Header that displays Hamburger Menu, Namazo Icon, Searchbar, and
@@ -26,6 +27,7 @@ function Header() {
         </div>
         <SearchBar />
         <Store />
+        <Cart />
         <ThemeSwitch />
       </div>
       <Divider />
