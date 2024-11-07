@@ -25,7 +25,7 @@ function Store() {
         <ModalContent >
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">
+              <ModalHeader className="flex justify-center">
                 Select Location
               </ModalHeader>
               <ModalBody className="text-black dark:text-white">

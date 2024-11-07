@@ -1,7 +1,9 @@
 'use client'
 import { useSearchContext } from '@/providers/SearchProvider'
+import { Button } from '@nextui-org/react'
 import { usePathname, useRouter } from 'next/navigation'
 import { FaSearch } from "react-icons/fa"
+import { IoIosClose } from 'react-icons/io'
 
 /* *
  * Component that allows the user to search for a product or category
@@ -65,6 +67,7 @@ function SearchBar() {
     </div>
     {searchTerm && (
     <div id="dropdown" className="absolute w-1/3 h-96 right-1/3 top-36 rounded-md flex justify-center items-center bg-slate-500/60 z-10 text-gray-900 dark:text-gray-50">
+        <Button className="absolute right-2 top-2" isIconOnly color="secondary" variant="solid" aria-label="Like" onClick={() => setSearchTerm("")}><IoIosClose size={32}/></Button>
         <ul className="w-4/5 h-max-full h-min-0 bg-slate-100 dark:bg-zinc-800 overflow-y-hidden shadow-2xl">
           {Array.from(searchResults.entries()).map(([title, id]) => (
             <li key={title} title={`namazo_item_${title}`} className="p-2 hover:text-purple-400" onClick={() => {redirectUserByID(title, id)}}>
