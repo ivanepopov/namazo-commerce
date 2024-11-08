@@ -29,7 +29,7 @@ can view additional information.
 * **Theme Switcher**: A button that allows users to switch between light and dark modes.
 * **Store Selector**: Users can change their preferred store through a press of a button.
 
-## Current System
+## Current System Design
 
 <p align="center">
   <img src="./sd_namazo.png" width="950" alt="system design">
@@ -43,11 +43,14 @@ Containerized with Docker
     - TypeScript: For type checking and coding standards
 * **Testing**:
     - Jest: For unit testing
+* **Backend**:
+    - FastAPI: Modern, fast (high-performance), web framework for building APIs
+    - MongoDB: NoSQL, document-oriented database for data storage
+    - Python: Implementation of backend services
 
 ## Todos
 - Add more categories with products
 - Add user authentication and personalization features
 - Implement a shopping cart feature
-- Integrate FastAPI backend with a MongoDB database to store product data
 - Add animations and transitions for better UX
 
