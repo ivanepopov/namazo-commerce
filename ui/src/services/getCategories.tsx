@@ -1,15 +1,28 @@
+import axios from "axios"
+import { useEffect, useState } from "react"
+
 /* * 
  * @param: url - Optional url used for testing purposes
  * 
  * @return: string[]
  * *******************************************************************/
-async function getCategories (url? : string) {
+function getCategories (url? : string) {
 
-    const res = await fetch(url? url : 'https://fakestoreapi.com/products/categories')
-        .then(res => res.json())
-        .catch(error => { return {} })
+    const [categories, setCategories] = useState<string[]>([])
 
-    return res 
+    useEffect(() => {
+      async function getData() {
+        const response = await axios.get("/api/categories")
+        const data = await response.data
+
+        const categories = data.map((c: { name: string }) => c.name)
+        setCategories(categories)
+      }
+      
+      getData().catch(console.error)
+    }, [])
+
+    return categories
 }
 
 export default getCategories

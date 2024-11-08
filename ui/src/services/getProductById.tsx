@@ -1,8 +1,10 @@
 import { Product } from "@/types/Product"
+import axios from "axios"
 
 const failProduct : Product = {
-    id: "FAIL", price: -1, title: "FAIL", description: "FAIL", category: "FAIL", image: "FAIL",
-    rating: { rate: -1, count: -1 }
+    _id: "FAIL", id: -1, price: -1, title: "FAIL", description: "FAIL", category: "FAIL", image: "FAIL",
+    rating: { rate: -1, count: -1 }, attributes: { brand: "FAIL"},
+    shippingDetails: { weight: -1, dimensions: { length: -1, width: -1, height: -1}, deliveryTimeframe: "FAIL"}
 }
 
 /* * 
@@ -12,12 +14,13 @@ const failProduct : Product = {
  * @return: Product
  * *******************************************************************/
 async function getProductById (id : string, url? : string) {
-  
-    const res = await fetch(url ? url : `https://fakestoreapi.com/products/${id}`)    
-        .then(res => res.json())
-        .catch(error => { return failProduct })
-
-    return res 
+    
+    let data: Product = failProduct
+    await axios.get(`/api/products/${id}`)
+        .then((res) => data = res.data)
+        .catch(e => console.log(e.message))
+    
+    return data 
 }
 
 export default getProductById

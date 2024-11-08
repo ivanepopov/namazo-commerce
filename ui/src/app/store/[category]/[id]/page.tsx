@@ -48,7 +48,7 @@ export default function Page({ params }: {
   
   return (
     <>
-      {product.id !== "FAIL" ?
+      {product._id !== "FAIL" ?
       <div className="flex justify-center">
         <div className="flex flex-row w-page h-page justify-center p-8 items-start text-black dark:text-white">
           <div className="w-1/6 p-2">

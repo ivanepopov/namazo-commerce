@@ -89,3 +89,12 @@ class ProductDAL:
             session=session,
         )
         return Product.from_doc(doc)
+    
+    async def list_products(self, category: str, session=None):
+      async for doc in self._product_collection.find(
+          {"category": category},
+          sort={"id": 1},
+          limit=11,
+          session=session,
+      ):
+          yield Product.from_doc(doc)

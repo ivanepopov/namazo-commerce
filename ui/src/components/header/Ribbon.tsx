@@ -1,13 +1,18 @@
+'use client'
 import getCategories from "@/services/getCategories"
 import Link from "next/link"
+import CustomLoading from "../CustomLoading"
 
 /* * 
  * Ribbon component that displays all categories below the Header,
  * used in root layout to prevent excess re-rendering
  * *******************************************************************/
-async function Ribbon() {
+function Ribbon() {
   
-  const categories: string[] = await getCategories()
+  const categories: string[] = getCategories()
+
+  if (categories.length === 0)
+    return <CustomLoading />
 
   return (
     <nav className="flex justify-center h-12 w-screen bg-black text-white">

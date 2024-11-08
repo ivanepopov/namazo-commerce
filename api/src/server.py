@@ -2,15 +2,14 @@ from contextlib import asynccontextmanager
 from datetime import datetime
 import os
 import sys
-
-from dotenv import load_dotenv
 from bson import ObjectId
 from fastapi import FastAPI, status
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel
 import uvicorn
 
-from dal import Product, ProductDAL
+from product_dal import Product, ProductDAL
+from category_dal import Category, CategoryDAL
 
 MONGODB_URI = os.environ.get("MONGODB_URI")
 DEBUG = os.environ.get("DEBUG", "").strip().lower() in {"1", "true", "on", "yes"}
@@ -27,6 +26,9 @@ async def lifespan(app: FastAPI):
     products = database.get_collection("products")
     app.product_dal = ProductDAL(products)
 
+    categories = database.get_collection("categories")
+    app.category_dal = CategoryDAL(categories)
+    
     yield
 
     client.close()
@@ -34,12 +36,23 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(lifespan=lifespan, debug=DEBUG)
 
+# CategoryDAL
+@app.get("/api/categories")
+async def get_categories() -> list[Category]:
+    return [i async for i in app.category_dal.list_categories()]
 
+# ProductDAL
 @app.get("/api/products/{id}")
-async def get_list(id: str) -> Product:
+async def get_product(id: str) -> Product:
     return await app.product_dal.get_product(id)
 
 
+@app.get("/api/{category}")
+async def get_products(category: str) -> list[Product]:
+    return [i async for i in app.product_dal.list_products(category)]
+
+
+# Dummy
 class DummyResponse(BaseModel):
     id: str
     when: datetime

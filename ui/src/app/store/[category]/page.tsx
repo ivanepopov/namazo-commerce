@@ -38,7 +38,7 @@ export default function Category({ params }: {
   if (loading || products === undefined)
     return <CustomLoading />  
 
-  const productItemList = products.map((product: Product) => <li key={product.id} title={product.title} id={product.id} className="p-2"><ProductCard product_data={product} /></li>)
+  const productItemList = products.map((product: Product) => <li key={product.id} title={product.title} id={product.id.toString()} className="p-2"><ProductCard product_data={product} /></li>)
   
   return (
     <>
@@ -47,7 +47,6 @@ export default function Category({ params }: {
         <div className="flex flex-row w-page h-page">
           <Sidebar />
           <ul className="flex flex-wrap w-3/4 p-4 items-start">
-            {productItemList}
             {productItemList}
           </ul>
         </div>
