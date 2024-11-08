@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-  Next.js · TypeScript · Tailwind · Jest · REST API · Docker
+  Next.js · TypeScript · Tailwind · MongoDB · FastAPI · Jest · REST API · Docker
 </p>
 
 <br/>
