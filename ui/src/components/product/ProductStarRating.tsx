@@ -18,9 +18,9 @@ function ProductStarRating({ rating }: { rating: { rate : number, count : number
 
   return (
     <>
-      <span className="text-yellow-600 text-lg">{shinystars}</span>
-      <span className="text-gray-500 dark:text-white text-sm">{sadstars}</span>
-      <span>- {rating.count} reviews</span>
+      <span className="text-yellow-600 text-medium">{shinystars}</span>
+      <span className="text-gray-500 dark:text-white text-medium">{sadstars}</span>
+      <span> - {rating.count} reviews</span>
     </>
   )
 }
