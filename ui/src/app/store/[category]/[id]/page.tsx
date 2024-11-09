@@ -2,17 +2,16 @@
 import getProductById from "@/services/getProductById"
 import { Product } from "@/types/Product"
 import Image from "next/image"
-import namazo from "@/util/namazo_light.png"
-import namazo_dark from "@/util/namazo_dark.png"
 import ProductStarRating from "@/components/product/ProductStarRating"
 import { Button, Code, Divider } from "@nextui-org/react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { useSearchContext } from "@/providers/SearchProvider"
 import ProductPrice from "@/components/product/ProductPrice"
-import CustomLoading from "@/components/LoadingBar"
+import LoadingBar from "@/components/LoadingBar"
 import { FaSearchLocation } from "react-icons/fa"
 import CustomLikeButton from "@/components/LikeButton"
+import NamazoImage from "@/components/NamazoImage"
 
 export default function Page({ params }: {
   params: {
@@ -41,7 +40,7 @@ export default function Page({ params }: {
   }, [product])
 
   if (loading || product === undefined)
-    return <CustomLoading />
+    return <LoadingBar />
 
   var url = false
   try {
@@ -58,10 +57,7 @@ export default function Page({ params }: {
             url ? 
               <Image className="w-96 h-auto object-contain" priority width={512} height={512} alt="item" src={ product.image } />
               :
-              <div>
-                <Image className="dark:hidden w-24 h-auto object-contain" priority width={96} height={96} alt="item missing" src={ namazo } />
-                <Image className="hidden dark:block w-24 h-auto object-contain" priority width={96} height={96} alt="item missing" src={ namazo_dark } />
-              </div>
+              <NamazoImage />
           }
           </div>
           <Divider orientation="vertical"/>

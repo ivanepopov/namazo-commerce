@@ -7,7 +7,7 @@ import { Button, Code, Divider } from "@nextui-org/react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import Sidebar from "@/components/sidebar/Sidebar"
-import CustomLoading from "@/components/LoadingBar"
+import LoadingBar from "@/components/LoadingBar"
 
 export default function Category({ params }: {
   params: {
@@ -36,7 +36,7 @@ export default function Category({ params }: {
   }, [products])
 
   if (loading || products === undefined)
-    return <CustomLoading />  
+    return <LoadingBar />  
 
   const productItemList = products.map((product: Product) => <li key={product.id} title={product.title} id={product.id.toString()} className="p-2"><ProductCard product_data={product} /></li>)
   

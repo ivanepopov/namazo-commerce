@@ -1,11 +1,10 @@
-import { Button, Card, CardBody, CardFooter, Divider } from "@nextui-org/react"
+import { Card, CardBody, CardFooter, Divider } from "@nextui-org/react"
 import Image from "next/image"
 import type { Product } from "@/types/Product"
-import namazo_light from "@/util/namazo_light.png"
-import namazo_dark from "@/util/namazo_dark.png"
 import ProductStarRating from "@/components/product/ProductStarRating"
-import { FaHeart } from "react-icons/fa"
-import ProductPrice from "./ProductPrice"
+import ProductPrice from "@/components/product/ProductPrice"
+import LikeButton from "@/components/LikeButton"
+import NamazoImage from "../NamazoImage"
 
 /* * 
  * Component that displays product information in a NextUI Card
@@ -31,10 +30,7 @@ function ProductCard({ product_data } : { product_data : Product }) {
                 className="w-24 h-24 mt-2 object-contain"
                 src={product_data.image}
               /> :
-                <div>
-                 <Image className="block dark:hidden w-24 h-24 object-contain" priority width={96} height={96} alt="item missing l" src={ namazo_light } />
-                 <Image className="hidden dark:block w-24 h-24 object-contain" priority width={96} height={96} alt="item missing d" src={ namazo_dark } />
-                </div>
+                <NamazoImage />
             }
             <p className="line-clamp-2 text-sm pl-1 pr-1 min-h-[2.5rem]">{product_data.title}</p>
             <p className="line-clamp-2 text-xs pl-1 pr-1"><ProductStarRating rating={product_data.rating}/></p>
@@ -43,9 +39,7 @@ function ProductCard({ product_data } : { product_data : Product }) {
         </a>
         <CardFooter className="text-small justify-between">
           <ProductPrice price={product_data.price} type="card"/>
-          <Button className="h-8 hover:text-[#F54180]" isIconOnly color="default" variant="flat" aria-label="Like">
-            <FaHeart size={16}/>
-          </Button>    
+          <LikeButton />  
         </CardFooter>
       </Card>
     )
