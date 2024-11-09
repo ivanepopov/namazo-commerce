@@ -15,7 +15,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="font-comfortaa bg-gradient-to-r bg-white dark:bg-black text-white dark:text-black">
+      <body className="font-comfortaa bg-white dark:bg-[#282828] text-white dark:text-black">
         <Providers>
           <Header />
           <div>
