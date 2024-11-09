@@ -4,13 +4,15 @@ import { Product } from "@/types/Product"
 import Image from "next/image"
 import namazo from "@/util/namazo_light.png"
 import namazo_dark from "@/util/namazo_dark.png"
-import StarRating from "@/components/product/ProductStarRating"
-import { Button, Code } from "@nextui-org/react"
+import ProductStarRating from "@/components/product/ProductStarRating"
+import { Button, Code, Divider } from "@nextui-org/react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import { useSearchContext } from "@/providers/SearchProvider"
 import ProductPrice from "@/components/product/ProductPrice"
-import CustomLoading from "@/components/CustomLoading"
+import CustomLoading from "@/components/LoadingBar"
+import { FaSearchLocation } from "react-icons/fa"
+import CustomLikeButton from "@/components/LikeButton"
 
 export default function Page({ params }: {
   params: {
@@ -62,13 +64,27 @@ export default function Page({ params }: {
               </div>
           }
           </div>
-          <div className="w-1/3 p-2">
+          <Divider orientation="vertical"/>
+          <div className="w-1/2 p-2">
             <p className="font-bold text-2xl">{product.title}</p>
-            <StarRating rating={product.rating}/>
-            <hr className="solid"/>
-            <ProductPrice price={product.price}/>
+            <p>by {product.attributes.brand}</p>
+            {product.rating.rate}&nbsp;
+            <ProductStarRating rating={product.rating}/>
+            <Divider />
+            <p className="pt-4">{product.description}</p>
           </div>
-          <div className="w-1/6 p-2">
+          <Divider orientation="vertical"/>
+          <div className="w-1/6 flex flex-col p-2 space-y-3">
+            Buy New:
+            <ProductPrice price={product.price}/>
+            <div className="flex flex-row justify-evenly items-center">
+              Add to Cart
+              <CustomLikeButton />
+            </div>
+            <Divider />
+            <Button variant="light" startContent={<FaSearchLocation size={24}/>}>
+              Delivery to LA
+            </Button>
           </div>
         </div>
       </div>

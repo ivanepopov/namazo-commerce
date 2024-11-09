@@ -3,11 +3,11 @@ import { useSearchContext } from "@/providers/SearchProvider"
 import ProductCard from "@/components/product/ProductCard"
 import getProductsByCategory from "@/services/getProductsByCategory"
 import { Product } from "@/types/Product"
-import { Button, Code } from "@nextui-org/react"
+import { Button, Code, Divider } from "@nextui-org/react"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 import Sidebar from "@/components/sidebar/Sidebar"
-import CustomLoading from "@/components/CustomLoading"
+import CustomLoading from "@/components/LoadingBar"
 
 export default function Category({ params }: {
   params: {
@@ -46,7 +46,8 @@ export default function Category({ params }: {
       <div className="flex justify-center">
         <div className="flex flex-row w-page h-page">
           <Sidebar />
-          <ul className="flex flex-wrap w-3/4 p-4 items-start">
+          <Divider orientation="vertical"/>
+          <ul className="flex flex-wrap w-3/4 p-4 items-start overflow-x-auto">
             {productItemList}
           </ul>
         </div>
