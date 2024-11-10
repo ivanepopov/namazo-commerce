@@ -8,6 +8,7 @@ import Link from "next/link"
 import { useEffect, useState } from "react"
 import Sidebar from "@/components/sidebar/Sidebar"
 import LoadingBar from "@/components/LoadingBar"
+import { IoIosArrowDown } from "react-icons/io"
 
 export default function Category({ params }: {
   params: {
@@ -17,17 +18,21 @@ export default function Category({ params }: {
   const { refreshData, setRefreshData } = useSearchContext()
   const [products, setProducts] = useState<Product[]>()
   const [loading, setLoading] = useState(true)
+  const [page, setPage] = useState(1)
 
   useEffect(() => {
     async function fetchProducts() {
       const { category } = await params
-      const fetchedProducts: Product[] = await getProductsByCategory(category)
-      setProducts(fetchedProducts)
+      const fetchedProducts: Product[] = await getProductsByCategory(category, page)
+
+      if (products === undefined) setProducts(fetchedProducts)
+      else setProducts([...products, ...fetchedProducts])
+
       setLoading(false)
     }
 
     fetchProducts()
-  }, [params])
+  }, [params, page])
 
   useEffect(() => {
     if (products) {
@@ -39,7 +44,7 @@ export default function Category({ params }: {
     return <LoadingBar />  
 
   const productItemList = products.map((product: Product) => <li key={product.id} title={product.title} id={product.id.toString()} className="p-2"><ProductCard product_data={product} /></li>)
-  
+
   return (
     <>
       {productItemList.length !== 0 ?
@@ -47,9 +52,17 @@ export default function Category({ params }: {
         <div className="flex flex-row w-page h-page">
           <Sidebar />
           <Divider orientation="vertical"/>
-          <ul className="flex flex-wrap w-3/4 p-4 items-start overflow-x-auto">
-            {productItemList}
-          </ul>
+          <div className="w-3/4 flex flex-col justify-between overflow-x-auto">
+            <ul className="flex flex-wrap justify-center overflow-x-auto">
+              {productItemList}
+              <button onClick={ () => { setPage(page + 1) }}  className="flex justify-evenly align-middle items-center bottom-0 h-12 w-full bg-gradient-to-b from-[#282828] to-[#484848] text-black dark:text-white">
+                <IoIosArrowDown size={32} />
+                <p>Show More</p>
+                <IoIosArrowDown size={32} />
+              </button>
+            </ul>
+          </div>
+          <Divider orientation="vertical"/>
         </div>
       </div>
       :
