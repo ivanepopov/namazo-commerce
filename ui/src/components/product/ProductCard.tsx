@@ -20,21 +20,24 @@ function ProductCard({ product_data } : { product_data : Product }) {
   } catch (e) {}
 
   return (
-      <Card className="w-48 h-64 p-2" shadow="sm" key={product_data.id}>
+      <Card className="w-52 h-68 p-2" shadow="sm" key={product_data.id}>
         <a key={product_data.title} href={`/store/${product_data.category}/${product_data.id}`}>
           <CardBody className="h-48 space-y-2 overflow-visible p-0 items-center text-black dark:text-white">
+            <Divider />
+            <div className="flex justify-center items-center w-44 h-24">
             { url ?
               <Image 
-                priority width={96} height={96}
+                priority width={176} height={96}
                 alt={product_data.title}
-                className="w-24 h-24 mt-2 object-contain"
+                className="w-44 h-24 mt-2 object-contain"
                 src={product_data.image}
               /> :
                 <NamazoImage />
             }
+            </div>
             <p className="line-clamp-2 text-sm pl-1 pr-1 min-h-[2.5rem]">{product_data.title}</p>
             <p className="line-clamp-2 text-xs pl-1 pr-1"><ProductStarRating rating={product_data.rating}/></p>
-            <Divider orientation="horizontal"/>
+            <Divider />
           </CardBody>
         </a>
         <CardFooter className="text-small justify-between">
