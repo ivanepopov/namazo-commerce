@@ -46,17 +46,17 @@ async def get_categories() -> list[Category]:
 async def get_product(id: str) -> Product:
     return await app.product_dal.get_product(id)
 
-
 @app.get("/api/{category}")
-async def get_products(category: str) -> list[Product]:
-    return [i async for i in app.product_dal.list_products(category)]
-
+async def get_products(category: str, page: int = 1) -> list[Product]:
+    products = []
+    async for product in app.product_dal.list_products(category, page):
+        products.append(product)
+    return products
 
 # Dummy
 class DummyResponse(BaseModel):
     id: str
     when: datetime
-
 
 @app.get("/api/dummy")
 async def get_dummy() -> DummyResponse:

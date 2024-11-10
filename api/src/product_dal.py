@@ -90,11 +90,14 @@ class ProductDAL:
         )
         return Product.from_doc(doc)
     
-    async def list_products(self, category: str, session=None):
-      async for doc in self._product_collection.find(
-          {"category": category},
-          sort={"id": 1},
-          limit=11,
-          session=session,
-      ):
-          yield Product.from_doc(doc)
+    async def list_products(self, category: str, page: int = 1, session=None):
+        items_per_page = 20
+        skip_count = (page - 1) * items_per_page
+            
+        async for doc in self._product_collection.find(
+            {"category": category},
+            sort={"id": 1},
+            skip=skip_count,
+            limit=items_per_page
+        ):
+            yield Product.from_doc(doc)
