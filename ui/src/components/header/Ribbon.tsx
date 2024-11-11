@@ -2,17 +2,29 @@
 import getCategories from "@/services/getCategories"
 import Link from "next/link"
 import LoadingBar from "../LoadingBar"
+import { useEffect, useState } from "react"
 
 /* * 
  * Ribbon component that displays all categories below the Header,
  * used in root layout to prevent excess re-rendering
  * *******************************************************************/
 function Ribbon() {
-  
-  const categories: string[] = getCategories()
 
-  if (categories.length === 0)
-    return <LoadingBar />
+  const [categories, setCategories] = useState<string[]>()
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    async function fetchCategories() {
+      const fetchedCategories: string[] = await getCategories()
+
+      setCategories(fetchedCategories)
+      setLoading(false)
+    }
+
+    fetchCategories()
+  }, [])
+
+  if (loading || categories === undefined) return <LoadingBar />
 
   return (
     <nav className="flex justify-center h-12 w-screen bg-[#121212] text-white">
