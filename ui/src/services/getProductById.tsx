@@ -13,10 +13,10 @@ const failProduct : Product = {
  * 
  * @return: Product
  * *******************************************************************/
-async function getProductById (id : string, url? : string) {
+async function getProductById (id : string) {
     
     let data: Product = failProduct
-    await axios.get(`/api/products/${id}`)
+    await axios.get(`/api/product/${id}`)
         .then((res) => data = res.data)
         .catch(e => console.log(e.message))
     

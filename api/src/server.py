@@ -42,11 +42,11 @@ async def get_categories() -> list[Category]:
     return [i async for i in app.category_dal.list_categories()]
 
 # ProductDAL
-@app.get("/api/products/{id}")
+@app.get("/api/product/{id}")
 async def get_product(id: str) -> Product:
     return await app.product_dal.get_product(id)
 
-@app.get("/api/{category}")
+@app.get("/api/products/{category}")
 async def get_products(category: str, page: int = 1) -> list[Product]:
     products = []
     async for product in app.product_dal.list_products(category, page):
