@@ -18,7 +18,7 @@ function Header() {
       <SaleRibbon type="Winter" dateEnd="12/31" percentOff={15}/>
       <div className="flex flex-row h-20 w-[1280px] items-center justify-between text-black dark:text-white">
         <RxHamburgerMenu  size={30}/>
-        <NamazoImage />
+        <NamazoImage link={true} />
         <SearchBar />
         <Store />
         <Cart />

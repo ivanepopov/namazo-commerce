@@ -32,7 +32,7 @@ function ProductCard({ product_data } : { product_data : Product }) {
                 className="w-44 h-24 mt-2 object-contain"
                 src={product_data.image}
               /> :
-                <NamazoImage />
+                <NamazoImage link={false} />
             }
             </div>
             <p className="line-clamp-2 text-sm pl-1 pr-1 min-h-[2.5rem]">{product_data.title}</p>
