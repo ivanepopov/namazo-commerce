@@ -14,7 +14,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning={true}>
+      <head>
+        <link rel="shortcut icon" href="../api/favicon.ico" />
+      </head>
       <body className="font-comfortaa bg-white dark:bg-[#282828] text-white dark:text-black">
         <Providers>
           <Header />

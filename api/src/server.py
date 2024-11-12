@@ -4,6 +4,7 @@ import os
 import sys
 from bson import ObjectId
 from fastapi import FastAPI, status
+from starlette.responses import FileResponse
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel
 import uvicorn
@@ -52,6 +53,11 @@ async def get_products(category: str, page: int = 1) -> list[Product]:
     async for product in app.product_dal.list_products(category, page):
         products.append(product)
     return products
+
+# Favicon
+@app.get("/api/favicon.ico", include_in_schema=False)
+async def get_favicon() -> FileResponse:
+    return FileResponse("src/static/favicon.ico", media_type="image/x-icon")
 
 # Dummy
 class DummyResponse(BaseModel):
