@@ -10,6 +10,11 @@ import Sidebar from "@/components/sidebar/Sidebar"
 import LoadingBar from "@/components/LoadingBar"
 import { IoIosArrowDown } from "react-icons/io"
 
+/* *
+ * CATEGORY PAGE
+ *
+ * @param category
+ * ********************************************************************/
 export default function Category({ params }: {
   params: {
     category: string
@@ -20,6 +25,7 @@ export default function Category({ params }: {
   const [loading, setLoading] = useState(true)
   const [page, setPage] = useState(1)
 
+  // GET categories
   useEffect(() => {
     async function fetchProducts() {
       const { category } = await params
@@ -34,6 +40,7 @@ export default function Category({ params }: {
     fetchProducts()
   }, [params, page])
 
+  // Refresh searchbar data
   useEffect(() => {
     if (products) {
       setRefreshData(!refreshData)
@@ -43,11 +50,10 @@ export default function Category({ params }: {
   if (loading || products === undefined)
     return <LoadingBar />  
 
-  const productItemList = products.map((product: Product) => <li key={product.id} title={product.title} id={product.id.toString()} className="p-2"><ProductCard product_data={product} /></li>)
+  const productItemList = products.map((product: Product) => <li key={product.id.toString()} title={product.title} id={product.id.toString()} className="p-2"><ProductCard product_data={product} /></li>)
 
   return (
-    <>
-      {productItemList.length !== 0 ?
+    productItemList.length !== 0 ?
       <div className="flex justify-center">
         <div className="flex flex-row w-page h-page">
           <Sidebar />
@@ -74,8 +80,6 @@ export default function Category({ params }: {
           </Button>
         </Link>
       </div>
-      }
-    </>
   )
 }
 

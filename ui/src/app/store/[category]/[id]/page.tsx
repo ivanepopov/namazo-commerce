@@ -13,6 +13,11 @@ import { FaSearchLocation } from "react-icons/fa"
 import CustomLikeButton from "@/components/LikeButton"
 import NamazoImage from "@/components/NamazoImage"
 
+/* *
+ * PRODUCT PAGE
+ *
+ * @param id: ID of Product
+ * ********************************************************************/
 export default function Page({ params }: {
   params: {
     id: string
@@ -22,6 +27,7 @@ export default function Page({ params }: {
   const [product, setProduct] = useState<Product>()
   const [loading, setLoading] = useState(true)
 
+  // GET Product by ID
   useEffect(() => {
     async function fetchProduct() {
       const { id } = await params
@@ -33,6 +39,7 @@ export default function Page({ params }: {
     fetchProduct()
   }, [])
 
+  // Refresh searchbar data
   useEffect(() => {
     if (product) {
       setRefreshData(!refreshData)
@@ -48,8 +55,7 @@ export default function Page({ params }: {
   } catch (e) {}
   
   return (
-    <>
-      {product._id !== "FAIL" ?
+    product._id !== "FAIL" ?
       <div className="flex justify-center">
         <div className="flex flex-row w-page h-page justify-center p-8 items-start text-black dark:text-white">
           <div className="w-1/6 p-2">
@@ -57,7 +63,7 @@ export default function Page({ params }: {
             url ? 
               <Image className="w-96 h-auto object-contain" priority width={512} height={512} alt="item" src={ product.image } />
               :
-              <NamazoImage />
+              <NamazoImage link={false} />
           }
           </div>
           <Divider orientation="vertical"/>
@@ -93,7 +99,5 @@ export default function Page({ params }: {
           </Button>
         </Link>
       </div>
-      }
-      </>
   )
 }

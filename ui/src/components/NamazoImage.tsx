@@ -3,6 +3,10 @@ import Image from "next/image"
 import namazo_light from "@/util/namazo_light.png"
 import namazo_dark from "@/util/namazo_dark.png"
 
+/* *
+ * Namazo Image component, returns dark image on light mode, and
+ * light image on dark mode for clarity
+ * *******************************************************************/
 function NamazoImage({ link } : { link : boolean }) {
   return link ?
       <div>
