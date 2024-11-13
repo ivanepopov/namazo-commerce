@@ -5,13 +5,25 @@ import ProductStarRating from "@/components/product/ProductStarRating"
 import ProductPrice from "@/components/product/ProductPrice"
 import LikeButton from "@/components/LikeButton"
 import NamazoImage from "../NamazoImage"
+import { redirectUserByID } from "../header/search/functions/redirectUserByID"
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime"
+
+type Props = {
+  product_data: Product,
+  setSearchTerm: (term: string) => void,
+  router: AppRouterInstance
+  pathname: string
+}
+
 
 /* * 
  * Component that displays product information in a NextUI Card
  *
  * @prop: product_data
  * *******************************************************************/
-function ProductCard({ product_data } : { product_data : Product }) {
+function ProductCard(props: Props) {
+
+  const { product_data, setSearchTerm, router, pathname } = props
 
   // Check if URL is valid
   var url = false
@@ -21,7 +33,7 @@ function ProductCard({ product_data } : { product_data : Product }) {
 
   return (
       <Card className="w-52 h-68 p-2" shadow="sm" key={product_data.id}>
-        <a key={product_data.title} href={`/store/${product_data.category}/${product_data.id}`}>
+        <button onClick={() => redirectUserByID(product_data.title, product_data.id.toString(), router, pathname, setSearchTerm)}>
           <CardBody className="h-48 space-y-2 overflow-visible p-0 items-center text-black dark:text-white">
             <Divider />
             <div className="flex justify-center items-center w-44 h-24">
@@ -39,7 +51,7 @@ function ProductCard({ product_data } : { product_data : Product }) {
             <p className="line-clamp-2 text-xs pl-1 pr-1"><ProductStarRating rating={product_data.rating}/></p>
             <Divider />
           </CardBody>
-        </a>
+        </button>
         <CardFooter className="text-small justify-between">
           <ProductPrice price={product_data.price} type="card"/>
           <LikeButton />  

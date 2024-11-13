@@ -20,7 +20,7 @@ export default function Category({ params }: {
     category: string
   }}) {
 
-  const { refreshData, setRefreshData } = useSearchContext()
+  const { refreshData, setRefreshData, setSearchTerm, router, pathname } = useSearchContext()
   const [products, setProducts] = useState<Product[]>()
   const [loading, setLoading] = useState(true)
   const [page, setPage] = useState(1)
@@ -50,7 +50,10 @@ export default function Category({ params }: {
   if (loading || products === undefined)
     return <LoadingBar />  
 
-  const productItemList = products.map((product: Product) => <li key={product.id.toString()} title={product.title} id={product.id.toString()} className="p-2"><ProductCard product_data={product} /></li>)
+  const productItemList = products.map((product: Product) =>
+    <li key={product.id.toString()} title={product.title} id={product.id.toString()} className="p-2">
+      <ProductCard product_data={product} router={router} pathname={pathname} setSearchTerm={setSearchTerm}/>
+    </li>)
 
   return (
     productItemList.length !== 0 ?
