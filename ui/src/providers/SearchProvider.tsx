@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useContext } from 'react'
 import type { SearchContextState } from "@/types/SearchContextState"
 import { useSearch } from '@/hooks/useSearch'
+import { usePathname, useRouter } from 'next/navigation'
 
 const SearchContext = createContext<SearchContextState | null>(null)
 
@@ -18,9 +19,11 @@ const SearchContext = createContext<SearchContextState | null>(null)
 const SearchProvider = ({ children } : { children : ReactNode}) => {
 
   const { searchResults, searchTerm, refreshData, setSearchTerm, setRefreshData } = useSearch()
+  const router = useRouter()
+  const pathname = usePathname()
 
   return (
-    <SearchContext.Provider value={{ searchResults, searchTerm, refreshData, setSearchTerm, setRefreshData }}>
+    <SearchContext.Provider value={{ searchResults, searchTerm, setSearchTerm, refreshData, setRefreshData, router, pathname}}>
       {children}
     </SearchContext.Provider>
   )
