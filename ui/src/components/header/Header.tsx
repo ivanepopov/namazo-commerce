@@ -24,9 +24,9 @@ function Header() {
         <Cart />
         <ThemeSwitch />
       </div>
-      <Divider />
+      <Divider orientation="horizontal"/>
       <Ribbon />
-      <Divider />
+      <Divider orientation="horizontal"/>
     </div>
     )
 }
