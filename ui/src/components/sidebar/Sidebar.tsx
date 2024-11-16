@@ -1,15 +1,22 @@
 'use client'
 import { Button, Divider, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger, Radio, RadioGroup, Selection, Slider } from "@nextui-org/react"
-import { useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { FaSort } from "react-icons/fa";
 
+type Props = {
+  setSortBy: Dispatch<SetStateAction<string | undefined>>
+}
 /* * 
  * Sidebar component that allows user to filter products by size,
  * price, color, etc.
  * *******************************************************************/
-function Sidebar() {
+function Sidebar(props: Props) {
 
   const [selectedKey, setSelectedKey] = useState<Selection>(new Set(["Featured"]));
+
+  useEffect(() => { 
+    props.setSortBy(Array.from(selectedKey)[0].toString())
+  }, [selectedKey])
 
   return (
     <div className="w-1/4 p-2 text-black dark:text-white text-center">
@@ -141,7 +148,7 @@ function Sidebar() {
       step={100} 
       maxValue={1000} 
       minValue={0} 
-      defaultValue={[0, 800]}
+      defaultValue={[0, 1000]}
       showOutline={true}
       disableThumbScale={true}
       formatOptions={{style: "currency", currency: "USD"}}

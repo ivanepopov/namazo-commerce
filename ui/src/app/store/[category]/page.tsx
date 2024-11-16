@@ -22,6 +22,8 @@ export default function Category({ params }: {
 
   const { refreshData, setRefreshData, setSearchTerm, router, pathname } = useSearchContext()
   const [products, setProducts] = useState<Product[]>()
+  const [productItemList, setProductItemList] = useState<JSX.Element[]>()
+  const [sortBy, setSortBy] = useState<string>()
   const [loading, setLoading] = useState(true)
   const [page, setPage] = useState(1)
 
@@ -38,28 +40,49 @@ export default function Category({ params }: {
     }
 
     fetchProducts()
-  }, [params, page])
+  }, [page])
 
-  // Refresh searchbar data
+  // Refresh searchbar data and apply sorting
   useEffect(() => {
-    if (products) {
-      setRefreshData(!refreshData)
+    setRefreshData(!refreshData)
+
+    if (products !== undefined && products.length !== 0) {
+
+      let newProductsArray = Array.from(products)
+
+      switch (sortBy) {
+        case "Price: Low to High":
+          newProductsArray.sort((a, b) => a.price - b.price); break
+        case "Price: High to Low":
+          newProductsArray.sort((a, b) => b.price - a.price); break
+        case "Rating":
+          newProductsArray.sort((a, b) => b.rating.rate - a.rating.rate); break
+        case "Review Count":
+          newProductsArray.sort((a, b) => b.rating.count - a.rating.count); break
+        default: break;
+      }
+
+      setProductItemList(
+        newProductsArray
+          .map((product: Product) =>
+            <li key={product.id.toString()} title={product.title} id={product.id.toString()} className="p-2">
+              <ProductCard product_data={product} router={router} pathname={pathname} setSearchTerm={setSearchTerm}/>
+            </li>
+          )
+      )
     }
-  }, [products])
 
-  if (loading || products === undefined)
-    return <LoadingBar />  
+  }, [products, sortBy])
 
-  const productItemList = products.map((product: Product) =>
-    <li key={product.id.toString()} title={product.title} id={product.id.toString()} className="p-2">
-      <ProductCard product_data={product} router={router} pathname={pathname} setSearchTerm={setSearchTerm}/>
-    </li>)
+
+  if (loading || productItemList === undefined)
+    return <LoadingBar />
 
   return (
     productItemList.length !== 0 ?
       <div className="flex justify-center">
         <div className="flex flex-row w-page h-page">
-          <Sidebar />
+          <Sidebar setSortBy={setSortBy}/>
           <Divider orientation="vertical"/>
           <div className="w-3/4 flex flex-col justify-between overflow-x-auto">
             <ul className="flex flex-wrap justify-center overflow-x-auto">
