@@ -6,15 +6,11 @@ import ProductPrice from "@/components/product/ProductPrice"
 import LikeButton from "@/components/LikeButton"
 import NamazoImage from "../NamazoImage"
 import { redirectUserByID } from "../header/search/functions/redirectUserByID"
-import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime"
+import { useSearchContext } from "@/providers/SearchProvider"
 
 type Props = {
   product_data: Product,
-  setSearchTerm: (term: string) => void,
-  router: AppRouterInstance
-  pathname: string
 }
-
 
 /* * 
  * Component that displays product information in a NextUI Card
@@ -23,7 +19,8 @@ type Props = {
  * *******************************************************************/
 function ProductCard(props: Props) {
 
-  const { product_data, setSearchTerm, router, pathname } = props
+  const { product_data } = props
+  const { setSearchTerm, router, pathname } = useSearchContext()
 
   // Check if URL is valid
   var url = false

@@ -20,7 +20,7 @@ export default function Category({ params }: {
     category: string
   }}) {
 
-  const { refreshData, setRefreshData, setSearchTerm, router, pathname } = useSearchContext()
+  const { refreshData, setRefreshData } = useSearchContext()
   const [products, setProducts] = useState<Product[]>()
   const [productItemList, setProductItemList] = useState<JSX.Element[]>()
   const [sortBy, setSortBy] = useState<string>()
@@ -66,7 +66,7 @@ export default function Category({ params }: {
         newProductsArray
           .map((product: Product) =>
             <li key={product.id.toString()} title={product.title} id={product.id.toString()} className="p-2">
-              <ProductCard product_data={product} router={router} pathname={pathname} setSearchTerm={setSearchTerm}/>
+              <ProductCard product_data={product} />
             </li>
           )
       )
