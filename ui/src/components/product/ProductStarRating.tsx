@@ -1,3 +1,10 @@
+type Props = {
+  rating: {
+    rate: number
+    count: number
+  }
+}
+
 /* * 
  * Component that nicely displays gold stars and colorless stars based
  * on rate, along with the number of reviews
@@ -5,9 +12,11 @@
  * @prop: rate - rating out of 5 stars
  * @prop: count - total number of reviews
  * *******************************************************************/
-function ProductStarRating({ rating }: { rating: { rate : number, count : number }}) {
+function ProductStarRating(props: Props) {
 
-  let n = Math.round(rating.rate)
+  const { rate, count } = props.rating
+
+  let n = Math.round(rate)
   let shinystars = ""
   let sadstars = ""
 
@@ -20,7 +29,7 @@ function ProductStarRating({ rating }: { rating: { rate : number, count : number
     <>
       <span className="text-yellow-600 text-medium">{shinystars}</span>
       <span className="text-gray-500 dark:text-white text-medium">{sadstars}</span>
-      <span> - {rating.count} reviews</span>
+      <span> - {count} reviews</span>
     </>
   )
 }
