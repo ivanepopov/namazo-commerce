@@ -25,10 +25,10 @@ export default function CategoryCard(props: Props) {
         className="z-0 w-full h-full scale-125 -translate-y-6 object-cover"
         src={image}
       />
-      <CardHeader className="dark:bg-white/80 bg-black/80 border-white/20 border-1 top-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large w-[calc(100%_-_8px)] shadow-small ml-1 z-5">
+      <CardHeader className="bg-white/80 border-white/20 border-1 top-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large w-[calc(100%_-_8px)] shadow-small ml-1 z-5">
       <div className="ml-3">
         <p className="text-tiny uppercase font-bold">New</p>
-        <h4 className="dark:text-black text-white font-medium text-2xl">{category}</h4>
+        <h4 className="text-black font-medium text-2xl">{category}</h4>
       </div>
       <Button onClick={() => router.push(`/store/${category}`)} className="absolute right-3 text-tiny text-white bg-black/80" variant="flat" color="default" radius="lg" size="sm">
         Shop now
