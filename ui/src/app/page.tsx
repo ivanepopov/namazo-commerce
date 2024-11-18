@@ -4,25 +4,17 @@ import { useSearchContext } from "@/providers/SearchProvider"
 import getCategories from "@/services/getCategories"
 import LoadingBar from "@/components/LoadingBar"
 import CategoryCard from "@/components/category/CategoryCard"
+import { Category } from "@/types/Category"
 
 export default function Home() {
 
   const { router, refreshData, setRefreshData } = useSearchContext()
-  const imageData: {[key: string]: string} =
-  {
-    "Books" : "https://images.unsplash.com/photo-1543002588-bfa74002ed7e",
-    "Clothing" : "https://images.unsplash.com/photo-1525562723836-dca67a71d5f1",
-    "Electronics" : "https://images.unsplash.com/photo-1640622842223-e1e39f4bf627",
-    "Home & Garden" : "https://images.unsplash.com/photo-1515150144380-bca9f1650ed9",
-    "Toys" : "https://images.unsplash.com/photo-1516981879613-9f5da904015f",
-  }
-
-  const [categories, setCategories] = useState<string[]>()
+  const [categories, setCategories] = useState<Category[]>()
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     async function fetchCategories() {
-      const fetchedCategories: string[] = await getCategories()
+      const fetchedCategories: Category[] = await getCategories()
 
       setCategories(fetchedCategories)
       setLoading(false)
@@ -37,9 +29,9 @@ export default function Home() {
 
   return (
     <div className="w-screen h-page">
-      <div className="flex p-4 space-x-4">
+      <div className="flex p-4 space-x-4 justify-center">
       {
-        categories.map((c: string) => <CategoryCard key={c} category={c} image={imageData[c]} router={router} />)
+        categories.map(c => <CategoryCard key={c.name} category={c.name} image={c.image} router={router} />)
       }
       </div>
     </div>

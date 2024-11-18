@@ -1,3 +1,4 @@
+import { Category } from "@/types/Category"
 import axios from "axios"
 
 /* *
@@ -5,13 +6,13 @@ import axios from "axios"
  *
  * @param: url - Optional url used for testing purposes
  * 
- * @return: string[]
+ * @return: Category[]
  * *******************************************************************/
 async function getCategories (url : string = "/api/categories") {
 
-    let categories: string[] = []
+    let categories: Category[] = []
     await axios.get(url)
-        .then((res) => categories = res.data.map((c: { name: string }) => c.name))
+        .then((res) => categories = res.data)
         .catch(e => console.log(e.message))
     
     return categories 

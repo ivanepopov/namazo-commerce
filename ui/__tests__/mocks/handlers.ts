@@ -2,11 +2,11 @@ import { Product } from '@/types/Product'
 import { http, HttpResponse } from 'msw'
 
 const allCategories = [
-    { name: "electronics" },
-    { name: "jewelery" },
-    { name: "men's clothing" },
-    { name: "women's clothing" },
-    { name: "awesome things" }
+    { name: "electronics", image: "image" },
+    { name: "jewelery", image: "image" },
+    { name: "men's clothing", image: "image" },
+    { name: "women's clothing", image: "image" },
+    { name: "awesome things", image: "image" }
 ]
 
 const allProducts: Product[] = [
@@ -31,7 +31,7 @@ export const handlers = [
     }),
 
     http.get('/api/categories/fail', () => { 
-        return HttpResponse.json([], { status: 502 })
+        return HttpResponse.json({}, { status: 502 })
     }),
 
     // getProductsByCategory
