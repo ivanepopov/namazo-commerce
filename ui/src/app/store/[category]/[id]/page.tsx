@@ -67,7 +67,7 @@ export default function Page({ params }: {
           }
           </div>
           <Divider orientation="vertical"/>
-          <div className="w-1/2 p-2">
+          <div className="w-4/6 p-4 leading-7">
             <p className="font-bold text-2xl">{product.title}</p>
             <p>by {product.attributes.brand}</p>
             {product.rating.rate}&nbsp;
@@ -76,15 +76,16 @@ export default function Page({ params }: {
             <p className="pt-4">{product.description}</p>
           </div>
           <Divider orientation="vertical"/>
-          <div className="w-1/6 flex flex-col p-2 space-y-3">
-            Buy New:
-            <ProductPrice price={product.price}/>
+          <div className="w-1/6 flex flex-col p-2 space-y-1">
+            <Button className="h-14" variant="light" color="success">
+              <ProductPrice price={product.price}/>
+            </Button>
             <div className="flex flex-row justify-evenly items-center">
               Add to Cart
               <CustomLikeButton />
             </div>
             <Divider />
-            <Button variant="light" startContent={<FaSearchLocation size={24}/>}>
+            <Button variant="light" color="primary" startContent={<FaSearchLocation size={24}/>}>
               Delivery to LA
             </Button>
           </div>
