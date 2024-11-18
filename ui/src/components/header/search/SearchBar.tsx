@@ -2,7 +2,6 @@
 import { useSearchContext } from '@/providers/SearchProvider'
 import SearchBarDropdownList from './SearchBarDropdownList'
 import SearchBarInput from './SearchBarInput'
-import { usePathname, useRouter } from 'next/navigation'
 
 /* *
  * Component that allows the user to search for a product or category
@@ -10,10 +9,7 @@ import { usePathname, useRouter } from 'next/navigation'
  * *******************************************************************/
 function SearchBar() {
   
-  const { searchResults, searchTerm, setSearchTerm } = useSearchContext()
-  
-  const router = useRouter()
-  const pathname = usePathname()
+  const { router, pathname, searchResults, searchTerm, setSearchTerm } = useSearchContext()
 
   return (
     <>

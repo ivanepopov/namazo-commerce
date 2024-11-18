@@ -23,12 +23,12 @@ function SaleRibbon(props : Props) {
   const [visibilty, setVisibility] = useState(true)
 
   // Does not display if type is none, or if visibility is false
-  if (type === "none") return <></>
-  if (!visibilty) return <></>
+  if (type === "none") return <div></div>
+  if (!visibilty) return <div></div>
 
   // Output customization based on sale type
   let saleRibbonClass = "w-screen h-12 flex flex-row items-center text-white "
-  let decoration: JSX.Element = <></>
+  let decoration: JSX.Element = <div></div>
 
   switch (type.toLowerCase()) {
     case "winter":

@@ -1,8 +1,6 @@
 'use client'
-import { useMount } from '@/hooks/useMount';
 import { Button, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, useDisclosure } from '@nextui-org/react'
 import { FaShoppingCart } from 'react-icons/fa'
-import UnmountedImage from '@/components/UnmountedImage';
 
 /* *
  * TODO - Currently Placeholder
@@ -13,10 +11,7 @@ import UnmountedImage from '@/components/UnmountedImage';
 function Cart() {
 
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
-  const { mounted } = useMount()
 
-  if (!mounted) return <UnmountedImage />
-  
   return (
     <div>
       <Button isIconOnly onPress={onOpen} variant="light" color="default">

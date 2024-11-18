@@ -1,9 +1,7 @@
 'use client'
-import { useMount } from '@/hooks/useMount';
 import { Button, Divider, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Radio, RadioGroup, useDisclosure } from '@nextui-org/react'
 import { useState } from 'react';
 import { FaStore } from 'react-icons/fa'
-import UnmountedImage from '@/components/UnmountedImage';
 
 /* *
  * TODO - Currently Placeholder
@@ -14,9 +12,6 @@ function Store() {
 
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
   const [store, setStore] = useState("None")
-  const { mounted } = useMount()
-
-  if (!mounted) return <UnmountedImage />
 
   return (
     <div>
