@@ -1,8 +1,8 @@
 'use client'
 import Link from "next/link"
 import Image from "next/image"
-import namazo_light from "@/util/namazo_light.png"
-import namazo_dark from "@/util/namazo_dark.png"
+import namazo_light from "@/util/img/namazo_light.png"
+import namazo_dark from "@/util/img/namazo_dark.png"
 import { useSearchContext } from "@/providers/SearchProvider"
 
 /* *
