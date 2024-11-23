@@ -1,7 +1,7 @@
 # namazo-commerce
 
 <p align="center">
-  <img src="./ui/src/util/namazo_dark.png" width="350" alt="namazo logo">
+  <img src="./ui/src/util/img/namazo_dark.png" width="350" alt="namazo logo">
 </p>
 
 <p align="center">
