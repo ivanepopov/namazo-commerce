@@ -19,12 +19,12 @@ jobs:
     - name: Create env file
       run: |
         echo "MONGODB_URI=${{ secrets.MONGODB_URI }}" > .env
-
-    - name: Build and run services
-      run: |
-        docker-compose up --build --detach
-      env:
-        DOCKER_BUILDKIT: 1
+  
+    - name: Run docker compose
+      uses: hoverkraft-tech/compose-action@v2.2.0
+      with:
+        compose-file: "./docker-compose.yaml"
+        up-flags: "--build --detach"
 
     - name: Wait for UI service to be ready
       run: |
@@ -32,15 +32,11 @@ jobs:
 
     - name: Build static files
       run: |
-        docker-compose exec ui npm run build
-      env:
-        DOCKER_BUILDKIT: 1
+        docker compose exec ui npm run build
 
     - name: Start static file server
       run: |
-        docker-compose up --detach static-server
-      env:
-        DOCKER_BUILDKIT: 1
+        docker compose up --detach static-server
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
