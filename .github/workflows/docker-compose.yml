@@ -16,29 +16,36 @@ jobs:
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
 
-    - name: Create env file
+    - name : Create env file
       run: |
         echo "MONGODB_URI=${{ secrets.MONGODB_URI }}" > .env
-  
-    - name: Run docker compose
+
+    - name : Docker compose
       uses: hoverkraft-tech/compose-action@v2.2.0
       with:
         compose-file: "./docker-compose.yaml"
         up-flags: "--build --detach"
 
-    - name: Wait for UI service to be ready
+    - name: Check UI service logs
       run: |
-        while [ "$(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000)" != "200" ]; do echo "Waiting for UI service..."; sleep 5; done
+        docker-compose logs ui
 
-    - name: Build static files
+    - name: Wait for UI service to be ready (with timeout)
       run: |
-        docker compose exec ui npm run build
-
-    - name: Start static file server
+        for i in {1..60}; do
+          curl -s -o /dev/null -w '%{http_code}' http://localhost:3000 && break || sleep 5
+          if [ "$i" -eq "60" ]; then echo "UI service did not start within the timeout period." >&2; exit 1; fi
+        done
+        
+    - name : Build static files
       run: |
-        docker compose up --detach static-server
+        docker-compose exec ui npm run build
 
-    - name: Deploy to GitHub Pages
+    - name : Start static file server
+      run: |
+        docker-compose up --detach static-server
+  
+    - name : Deploy
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
