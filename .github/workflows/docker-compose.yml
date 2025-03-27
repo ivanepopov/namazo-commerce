@@ -34,7 +34,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "20"
-          cache: ${{ steps.detect-package-manager.outputs.manager }}
+          cache: "npm"
+          cache-dependency-path: "**/package-lock.json"
           
       - name : Create env file
         run: |
